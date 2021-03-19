@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>5</title>
+	<style>
+    body{
+	background:url("images/u=318671592,655222009&fm=16&gp=0.gif");
+	background-size: cover;
+    }
+	div{
+		display: inline-block;
+		width: 1000px;
+		height: 2500px;
+		background: #F1EAEA;
+		position: absolute;
+		left: 0;
+	    right: 0;
+	    top: 150px;
+	    margin: auto;
+	}	
+	h1{
+		text-align: center;
+		margin-top: 50px;
+	}
+	p,h4,h2{
+		text-indent: 100px;
+	}
+	ul{
+		margin-left: 100px;
+	}
+	h4{
+		margin-left: 100px;
+		background:#DBD8D8
+	}
+			.zd img{
+	position: fixed;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	display: none;
+	z-index: 2;
+}
+</style>
+	<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/LZS博客.js"></script>
+</head>
+<body>
+	<div class="zd"><img src="images/zd.png" alt=""></div><h1>React实战篇（React仿今日头条）</h1>
+	<div>
+<h2>前言</h2>
+
+<p>上次初学用 react 写了个后台管理，这次便寻思写个移动端的项目。便有了这次的这个项目。</p>
+<h2>技术栈:</h2>
+<p>react + react-redux + react-router + webpack</p>
+<h2>结构：</h2>
+  <p> build: webpack配置</p>
+  <p> config: 项目配置参数</p>
+  <p>src</p>
+  <p>actions: 存放 action 方法</p>
+  <p>assets: 静态资源文件，存放图片啥的</p>
+  <p>components: 常用组件</p>
+  <p> reducers: 存放 reducer</p>
+  <p>router: 路由管理</p>
+  <p>store: 状态管理 redux</p>
+  <p>styles: 样式文件</p> 
+  <p>utils: 常用封装</p>
+  <p> views: 视图页面</p>
+  <p>static: 静态文件： 存放 favicon.ico 等等</p>
+<h2>按需加载</h2>
+<p>通过 import() 方法加载组件， 在通过高阶组件处理 import 返回的 Promise 结果。
+</p>
+<h4>
+// asyncComponent.js
+import React from 'react'
+
+export default loadComponent => (
+    class AsyncComponent extends React.Component {
+        state = {
+            Component: null,
+        }
+        async componentDidMount() {
+            if (this.state.Component !== null) return
+            try {
+                const {default: Component} = await loadComponent()
+                this.setState({ Component })
+            }catch (err) {
+                console.error(`Cannot load component in <AsyncComponent />`);
+                throw err
+            }
+        }
+
+        render() {
+            const { Component } = this.state
+            return (Component) ? <Component {...this.props} /> : null
+        }
+    }
+)
+</h4>
+<h2>如下使用</h2>
+
+<p>import asyncComponent from './asyncComponent'</p>
+<p>const Demo = asyncComponent(() => import(`views/demo.js`))</p>
+<Route path="/demo" component={Demo}/>
+
+<h2>路由设置</h2>
+
+<p>统一配置路由，及路由状态</p>
+<h4>
+import asyncComponent from './asyncComponent'
+const _import_views = file => asyncComponent(() => import(`views/${file}`))
+export const loyoutRouterMap = [
+    { 
+        path: '/', 
+        name: '首页', 
+        exact: true,
+        component: _import_views('Home')
+    },
+    { 
+        path: '/video', 
+        name: '视频',
+        component: _import_views('Video')
+    },
+    { 
+        path: '/headline', 
+        name: '微头条',
+        component: _import_views('Headline')
+    },
+    { 
+        path: '/system', 
+        name: '系统设置',
+        auth: true, 
+        component: _import_views('System')
+    }
+] 
+</h4>
+<h2>登录拦截</h2>
+
+<p>通过路由配置中 auth 属性来判断是否需要登录</p>
+<p>如以下配置</p>
+<h4>
+{ 
+    path: '/system', 
+    name: '系统设置',
+    auth: true, 
+    component: _import_views('System')
+}
+
+登陆配置及判断
+
+// authRoute.js
+import React from 'react'
+import store from '../store'
+import { Route, Redirect } from 'react-router-dom'
+
+export default class extends React.Component {
+    render () {
+        let {component: Component, ...rest} = this.props
+        // 是否登录
+        if (!store.getState().user.user.name) {
+            return <Redirect to='/login' />
+        }
+        return <Route {...rest}  component={Component}/>
+    }
+}
+
+
+// 生成route
+const renderRouteComponent = routes => routes.map( (route, index) => {
+    if (route.auth) { // 需要权限登录
+        return <AuthRoute key={index} {...route}/>
+    }
+    return <Route key={index} {...route}/>
+})
+</h4>
+<h2>路由动画</h2>
+
+<p>通过 react-router-transition 做的切换动画。
+</p>
+<p>然后通过 history.slideStatus 来判断如何动画
+</p>
+<p>react-router-transition 具体API</p>
+
+
+<h2>redux-thunk处理action异步</h2>
+<p>用 redux-actions 来书写 action 跟 reducer
+</p>
+		<h4>
+// action.js
+import { createAction } from 'redux-actions'
+import axios from 'utils/axios'
+export const getHeadlineList = (params) => dispatch => {
+    return new Promise( (resolve, reject) => {
+        axios.get('headline/list', params)
+            .then( res => {
+                const list = res.data.list
+                dispatch(createAction('GET_HEADLINE_LIST')(list))
+                resolve(list)
+            }).catch( err => {
+                reject(err)
+            })
+    })
+}
+
+// reducer.js
+import { handleActions } from 'redux-actions'
+import { combineReducers } from 'redux'
+const state = {
+    headlineList: []
+}
+const headline = handleActions({
+    GET_HEADLINE_LIST: (state, action) => {
+        let list = action.payload
+        state.headlineList = state.headlineList.concat(list)
+        return {...state}
+    }
+}, state)
+export default combineReducers({
+    headline
+})
+
+// store.js  
+// redux-thunk配置
+import { createStore, compose, applyMiddleware  } from 'redux'
+import reducer from '../reducers'
+import thunk from 'redux-thunk'
+const configureStore => createStore(
+    reducer,
+    compose(
+        applyMiddleware(thunk)
+    ) 
+)
+export default configureStore()
+</h4>
+<p>还有一些零零散散的知识点，就不介绍了，具体可以到 github 上查看。</p>
+	</div>
+</body>
+</html>

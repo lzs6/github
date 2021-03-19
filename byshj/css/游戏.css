@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background: #BDB1A3 ;
+}
+.hb{
+	perspective: 2000px;
+}
+.b{
+	transform-style: preserve-3d;
+	animation: xz 8s linear infinite;
+}
+a{
+	display:block;
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	left: 600px;
+	top: 300px;
+	border: 1px solid #000000;
+	z-index: 1;
+}	
+.q{
+    background:url("../images/穿越火线.jpg")no-repeat;
+	background-size: cover;
+	transform:  translateZ(150px);
+}
+.h{
+	background:url("../images/QQ飞车.jpg")no-repeat;
+	background-size: cover;
+	transform:rotateX(180deg) translateZ(150px) rotateZ(180deg);
+}
+.z{
+	background:url("../images/流星蝴蝶剑.jpg")no-repeat;
+	background-size: cover;
+	transform: rotateY(-90deg)  translateZ(150px);
+}
+.y{
+	background:url("../images/和平精英.jpg")no-repeat;
+	background-size: cover;
+	transform: rotateY(90deg)  translateZ(150px) ;
+}
+.s{
+	background:url("../images/英雄联盟.jpg")no-repeat;
+	background-size: cover;
+	transform: rotateX(90deg)  translateZ(150px);
+}
+.x{
+	background:url("../images/王者荣耀.jpg")no-repeat;
+	background-size: cover;
+	transform: rotateX(-90deg)  translateZ(150px);
+}
+@keyframes xz{
+	0%{transform: rotateY(0deg)scaleZ(0.8)}
+	25%{transform: rotateX(90deg)scaleZ(1.2)}
+	50%{transform: rotateY(180deg)scaleZ(0.8)}
+	75%{transform: rotateX(270deg)scaleZ(1.2)}
+	100%{transform:rotateY(360deg)scaleZ(0.8)}
+}
+.b:hover{
+	animation-play-state: paused;
+}

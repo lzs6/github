@@ -1,0 +1,80 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin: 0;
+	padding: 0;
+	background: #BDB1A3;
+}
+.hb{
+	perspective: 1000px;
+}
+.b{
+    transform-style: preserve-3d;
+	animation: xz 10s linear infinite;
+	
+}
+.b:hover{
+	animation-play-state: paused;	
+}
+.b a:hover{
+	outline: #4BC6CA 3px solid;
+}
+a{
+	display:block;
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	left: 600px;
+	top: 150px;
+	opacity: 0.9;
+	z-index: 1;
+}	
+.q{
+	background: url("../images/O1CN01Ulo0I32G7qsMp6BI7_!!0-item_pic.jpg") no-repeat;
+	background-size: cover;
+	transform:translateZ(300px);
+}
+.h{
+	background: url("../images/O1CN017AEMeb1yNH81nPfKA_!!0-item_pic-1.jpg") no-repeat;
+	background-size: cover;
+	transform:rotateY(60deg)translateZ(300px);
+}
+.z{
+	background: url("../images/O1CN01WySY7Q1iq6ByjISqX_!!0-saturn_solar.jpg_220x220.jpg") no-repeat;
+	background-size: cover;
+	transform:rotateY(120deg)translateZ(300px);
+}
+.y{
+	background: url("../images/TB20lY8qUR1BeNjy0FmXXb0wVXa_!!1751782584.jpg") no-repeat;
+	background-size: cover;
+    transform:rotateY(180deg)translateZ(300px);
+}
+.s{
+	background: url("../images/O1CN01TQ6pPI1yNH7OYlq0Q_!!0-item_pic.jpg") no-repeat;
+	background-size: cover;
+	transform:rotateY(240deg)translateZ(300px);
+}
+.x{
+	background: url("../images/O1CN01gQ5Kaz1joYTPO6Qg8_!!0-item_pic.jpg") no-repeat;
+	background-size: cover;
+	transform:rotateY(300deg)translateZ(300px);
+}
+@keyframes xz{
+	0%{transform: rotateY(0deg)}
+	25%{transform: rotateY(90deg)}
+	50%{transform: rotateY(180deg)}
+	75%{transform: rotateY(270deg)}
+	100%{transform:rotateY(360deg)}
+}
+#next{
+	position: absolute;
+	z-index: -1;
+}
+img{
+	width: 300px;
+	height: 400px;
+	position: fixed;
+	right: 20px;
+	bottom:0px;
+	cursor: pointer;
+}

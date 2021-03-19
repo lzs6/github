@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+html{
+    font-size: calc(100vw / 1600 * 100);
+}
+body{
+	background: #BDB1A3 ;
+}
+.like{
+	width: 30%;
+	height: 5.61rem;
+	margin:100px 1.5% ;
+	position: relative;
+	float: left;
+}
+.yy{
+	background:url("../images/bj1.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+.yd{
+	background:url("../images/bj2.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+.yx{
+	background:url("../images/bj3.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+img{
+	width: 1.3rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+img:hover{
+	transform: scale(1.1);
+}
+div:hover{
+	outline: #4BC6CA 2px solid;
+}
+@media screen and (max-width:900px){
+	.like{
+		float: none;
+		width: 60%;
+		height: 10rem;
+		margin:50px auto ;
+	}
+	img{
+		width: 2rem;
+	}
+}

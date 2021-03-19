@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin: 0;
+	padding: 0;
+	background: #BDB1A3 ;
+}
+.header{
+	width: 100%;
+	height: 150px;
+	border-bottom: 5px solid #1A1919;
+	text-align: center;
+}
+.header img{
+	width:1300px;
+	height: 130px;
+	display: inline-block;
+	margin-top: 20px;
+	
+}
+.left{
+	width: 30%;
+	height: 595px;
+	text-align: center;
+	border-right:5px solid #1A1919;
+	overflow: hidden;
+	float: left;
+}
+.left p{
+	text-indent: 40px;
+	text-align: left;
+	line-height: 30px;
+	font-size: 20px;
+	font-weight: 700;
+}
+.right{
+	width: 69%;
+	height: 595px;
+	float: left;
+	position: relative;
+}
+img{
+    width: 420px;
+    height: 266px;
+}
+.one{
+    position: absolute;
+    left: 70px;
+    top: 50px;
+    z-index: 1;
+}
+.two{
+    position: absolute;
+    left: 287px;
+    top: 144px;
+    z-index: 3;
+}
+.three{
+    position: absolute;
+    right: 70px;
+    bottom: 50px;
+    z-index: 2;
+}
