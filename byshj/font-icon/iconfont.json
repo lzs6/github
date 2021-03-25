@@ -1,0 +1,44 @@
+{
+  "id": "2445746",
+  "name": "text",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1146",
+      "name": "兴趣定向",
+      "font_class": "xingqudingxiang",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "2198768",
+      "name": "技术",
+      "font_class": "jishu",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "4784099",
+      "name": "留言",
+      "font_class": "liuyan",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "15015462",
+      "name": "项目",
+      "font_class": "xiangmu",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "15660086",
+      "name": "简历监控",
+      "font_class": "jianlijiankong",
+      "unicode": "ea9e",
+      "unicode_decimal": 60062
+    }
+  ]
+}

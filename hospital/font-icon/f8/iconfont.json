@@ -1,0 +1,51 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "607133",
+      "name": "体检报告查询",
+      "font_class": "tijianbaogaochaxun",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "3063552",
+      "name": "就医就诊",
+      "font_class": "jiuyijiuzhen",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "3909826",
+      "name": "健康管理",
+      "font_class": "navicon-jkgl",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "6560961",
+      "name": "康复训练",
+      "font_class": "kangfuxunlian",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "9278060",
+      "name": "指南",
+      "font_class": "icon_zhinan",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "9626897",
+      "name": "路线",
+      "font_class": "luxian",
+      "unicode": "e874",
+      "unicode_decimal": 59508
+    }
+  ]
+}

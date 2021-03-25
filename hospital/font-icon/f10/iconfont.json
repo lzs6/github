@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "856394",
+      "name": "电话",
+      "font_class": "dianhua",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "970752",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "6743083",
+      "name": "医院挂号",
+      "font_class": "yiyuanguahao",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "12683880",
+      "name": "首页",
+      "font_class": "icon_huabanfuben",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "13955642",
+      "name": "收费记录",
+      "font_class": "shoufeijilu",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    }
+  ]
+}
