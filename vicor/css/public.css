@@ -1,0 +1,74 @@
+header{
+    width: 100%;
+    height: 0.88rem;
+    text-align: center;
+    position: relative;
+    border-bottom:#c3c9c9 1px solid;
+}
+header img{
+    width: 0.92rem;
+    height: 0.3rem;
+    margin-top: 0.29rem;
+}
+@font-face {
+    font-family: 'header';
+    src: url('../font/f1/iconfont.eot');
+    src: url('../font/f1/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/f1/iconfont.woff2') format('woff2'),
+    url('../font/f1/iconfont.woff') format('woff'),
+    url('../font/f1/iconfont.ttf') format('truetype'),
+    url('../font/f1/iconfont.svg') format('svg');
+}
+header span{
+    font-family: 'header';
+    font-size: 0.28rem;
+}
+header span:first-child{
+    position: absolute;
+    left: 0.24rem;
+    top: 0.29rem;
+}
+header span:last-child{
+    position: absolute;
+    right: 0.24rem;
+    top: 0.3rem;
+} /*头部*/
+.table{
+    width: 100%;
+    height: 1rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #ffffff;
+    border-top: thistle 1px solid;
+}
+.table a{
+    color: #000000;
+}
+.table a:hover{
+    color: cornflowerblue;
+}
+.table>li{
+    width:25%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+@font-face {
+    font-family: 'table';
+    src: url('../font/f2/iconfont.eot');
+    src: url('../font/f2/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/f2/iconfont.woff2') format('woff2'),
+    url('../font/f2/iconfont.woff') format('woff'),
+    url('../font/f2/iconfont.ttf') format('truetype'),
+    url('../font/f2/iconfont.svg') format('svg');
+}
+.table>li p:first-child{
+    font-family: 'table';
+    font-size: 0.3rem;
+    margin-top: 0.15rem;
+}
+.table>li p:last-child{
+    font-size: 0.2rem;
+    margin: 0.09rem auto 0.14rem;
+} /*标签栏*/
