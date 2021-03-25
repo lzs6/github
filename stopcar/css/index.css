@@ -1,0 +1,511 @@
+/* 标题开始 */
+html body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../img/bg.png);
+    background-size: 100% 100%;
+}
+.background{
+    width: 95%;
+    height: 97%;
+    margin: auto;
+    padding-top: 1.3%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.background .title{
+  width: 100%;
+  height: 5.5%;
+  position: relative;
+  padding-bottom: 1.4%;
+  box-sizing: border-box;
+}
+.background .title1{
+    width:80%
+}
+.title1 img{
+    width:10%;
+    float: left;
+    margin-top: 0.4%px;
+}
+.title1 p{
+    font-size: 3vh;
+    color: #fff;
+    float: left;
+    margin-left: 0.85%;
+}
+.time{
+    width: 10%;
+    float: right;
+    text-align: center;
+}
+.time p{
+    font-size: 1.8vh;
+    color: #fff;
+}
+.time p:first-child{
+    margin-left: 10%;
+}
+.time p{
+    font-size: 1.8vh;
+    color: #fff;
+}
+.title::after{
+    content: "";
+    width: 100%;
+    border: 0.02vh solid #00a0e9; 
+    position: absolute;
+    top: 110%;
+    left: 1%;
+}
+/* 标题结束 */
+.content{
+    width: 100%;
+    height: 95%;
+    overflow: hidden;
+}
+/* 左区域开始 */
+/* 今日收入开始 */
+.left{
+    width: 23.5%;
+    height: 86%;
+    margin-top: 2.3%;
+    float: left;
+}
+.income{
+    width: 100%;
+    height: 22%;
+    background-image: url(../img/conleft1.png);
+    background-size:100% 100%;
+    margin-bottom: 4%;
+    float: left;
+
+}
+.income p{
+    font-size: 2.2vh;
+    color: #fff;
+    margin-top: -2%;
+}
+.money{
+    width: 40%;
+    text-align: center;
+    padding-bottom: 2.8%;
+    margin-left: 8%;
+    box-sizing: border-box;
+    float: left;
+    margin-top: 8%;
+}
+.income .money span{
+    font-family: Quartz;
+    font-size: 35px;
+    color:#fcff00;
+}
+/*@font-face {
+    font-family: abc;
+    src: url(../font/QuartzRegular.ttf);
+}*/
+.left .percent{
+    text-align: center;
+    width: 40%;
+    float: right;
+}
+.percent img{
+    width: 35%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right: 20%;
+}
+.percent p{
+    font-size: 2.2vh;
+    color: #fff;
+    margin-top: 4%;
+}
+.income .percent .p1{
+    color: red;
+    margin-right: 17%;
+}
+/* 今日收入结束 */
+/* 时长区开始 */
+.dartion{
+    width: 100%;
+    height: 36%;
+    background-image: url(../img/conleft2.png);
+    background-size:100% 100%;
+    margin-bottom: 4%;
+    float: left;
+    text-align: center;
+    position: relative;
+
+}
+.dartion p{
+    font-size: 2.2vh;
+    color: #fff;
+    margin-top: 4%;
+}
+.stoptime{
+    width: 280px;
+    height: 180px;
+    margin: auto;
+    position: relative;
+    margin-top: -5%;
+}
+/* 时长区结束 */
+/* 警告区开始 */
+.warn{
+    width: 100%;
+    height: 47%;
+    background-image: url(../img/conlet3.png);
+    background-size:100% 100%;
+    float: left;
+    z-index: 5;
+    overflow: hidden;
+}
+.warn .p-warn{
+    font-size: 2.2vh;
+    color: #fff;
+    margin-top: 2.5%;
+    text-align: center;
+    margin-bottom: 3%;
+}
+.bannerfather{
+    width: 100%;
+    height: 637.5px;
+    position: relative;
+    overflow: hidden;
+}
+.warnbanner{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    overflow: hidden;
+}
+.warn-con{
+    width: 100%;
+    height: 224.5px;
+    overflow: hidden;
+}
+.warn-con .no-con{
+    width: 100%;
+    height: 45px;
+    padding: 0 6% 0 6%;
+    box-sizing: border-box;
+}
+
+
+.no-con p{
+    float: right;
+    color: #fff;
+    font-size: 1.4vh;
+    margin-top: -5%; 
+    display: block;
+}
+.warn-con .no{
+    width: 60%;
+    height: 50%;
+    border-radius: 1.5vh;
+    border: 0.01vh solid #43ffd2;
+    box-sizing: border-box;
+}
+.no-btn{
+    width: 26%;
+    height: 100%;
+    border-radius: 1.5vh;
+    background-color: #43ffd2;
+    text-align: center;
+    line-height: 100%;
+    float: left;
+}
+.no .no-btn span{
+    font-size: 1.3vh;
+    color: #000;
+}
+.con2 .no{
+    border-color: #ff0000;
+}
+.con2 .no-btn{
+    background-color: #ff0000;
+}
+.greencity{
+    width: 100%;
+    height: 50%;
+    /* padding: 2.5% 3% 0 6%; */
+    box-sizing: border-box;
+}
+.libai{
+    font-size: 1.4vh;
+    color: #fefefe;
+    float: left;
+    margin-top: 2.4%;
+    margin-left: 10%;
+}
+.greencity p{
+    margin-top: 5px;
+    float: left;
+    font-size: 1.4vh;
+    color: #fff;
+}
+.greencity span{
+    margin-top: 3px;
+    float: right;
+    font-size: 1.4vh;
+    color: #fff;
+}
+/* 警告区结束 */
+/* 左区域结束 */
+/* 中区域开始 */
+.center{
+    width: 50%;
+    height: 94%;
+    float: left;
+    position: relative;
+}
+.center-top{
+    width: 100%;
+    height: 59%;
+}
+.map{
+    width: 500px;
+    height: 400px;
+    margin: auto;
+    margin-top: -20px;
+
+}
+.carcode{
+    width: 180px;
+    height: 150px;
+    position: absolute;
+    top: 12%;
+    left: 40%;
+   background-color: rgba(0, 0, 0, .4);
+   border: 1px solid #026a78;
+   overflow: hidden;;
+}
+.carcount{
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+.le1{
+    width: 40%;
+    float: left;
+    background-color: #051631;
+    margin-left: 10%;
+    border-right: 2px solid #426bff;
+}
+.ri1{
+    width: 40%;
+    float: left;
+    background-color: #051631;
+    border-left: 2px solid #426bff;
+}
+.carcode h2{
+    font-size: 20px;
+    color: #00a0e9;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+
+
+}
+.carcode span{
+    font-size: 11px;
+    color: #fff;
+    margin-left: 6%;
+}
+.carcode .money1{
+    display: block;
+    margin-left: 8%;
+    margin-bottom: 2%;
+}
+.carcode p{
+    font-size: 16px;
+    color: #3ce420;
+    text-align: center;
+}
+.carcount p{
+    font-size: 13px;
+    color: #fff;
+}
+.carcount .p5{
+    font-size: 20px;
+    color: #1378d6;
+}
+.carbottom{
+    width: 100%;
+    float: left;
+}
+.center-bottom{
+    width: 100%;
+    height: 260px;
+    background-image: url(../img/midd2.png);
+    background-size:100% 100%;
+    position: relative;
+    float: left;
+    margin-left: 3%;
+    margin-top: 6.5%;
+    overflow: hidden;
+
+}
+.center-list{
+    width: 188vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.center-bottom li{
+    width: 11vw;
+    height: 300px;
+    text-align: center;
+    margin-top: 20px;
+    float: left;
+    margin-left: 0.2%;
+}
+.center-bottom li:first-child{
+    margin-left: 0;
+}
+.center-bottom li img{
+    width: 9vw;
+    margin-left: 0.5%;
+}
+.center-bottom li p{
+    font-size: 15px;
+    color: #fff;
+    margin-top: 10px;
+}
+.center-bottom li h3{
+    font-size: 2vh;
+    color: #fff;
+    margin-bottom: 10px;
+}
+/* 中区域结束 */
+/* 右区域开始 */
+/* 车位区开始 */
+.right{
+    width: 24%;
+    height: 92.5%;
+    float:right;
+    margin-top: 1.7%;
+}
+.car{
+    width: 100%;
+    height: 22%;;
+
+}
+.right .car li{
+    width: 30%;
+    box-sizing: border-box;
+    padding:3.8% 1% 15% 1%;
+    background-color: #17253a;
+    text-align: center;
+    float: left;
+    margin-left: 5%;
+}
+.car li:first-child{
+    margin-left: 0;
+}
+.right .car li h2{
+    font-size: 3vh;
+    color:#1099db;
+    margin-top: 18%;
+}
+.right .car li p{
+    font-size: 1.6vh;
+    color:#fff;
+    margin-top: 10%;
+}
+/* 车位区结束 */
+/* 收费排行开始 */
+.charges{
+    width: 100%;
+    height: 34%;
+    background-image: url(../img/conleft2.png);
+    background-size: 100% 100%;
+    margin-top:4% ;
+    overflow: hidden;
+    position: relative;
+}
+.charges p{
+    font-size: 2.2vh;
+    color: #b7e3fe;
+    margin-top: 4%;
+    text-align: center;
+}
+.chargecon{
+    width: 100%;
+    height: 80%;
+    margin-top: -20px;
+}
+.charges1{
+    width:50%;
+    height: 180px;
+    float: left;
+}
+.charges2{
+    width: 50%;
+    height: 180px;
+    float: left;
+}
+/* 收费排行结束 */
+/* 运营区开始 */
+.run{
+    width: 100%;
+    height: 42.5%;
+    background-image: url(../img/conlet3.png);
+    background-size: 100% 100%;
+    margin-top: 5%;
+    overflow: hidden;
+    position: relative;
+}
+.run-banner{
+    width: 100%;
+    width: 100%;
+    height: 720px;
+    position: relative;
+    overflow: hidden;
+}
+.run-list{
+    width: 100%;
+    position: absolute;
+    padding: 0 7% 0 7%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    overflow: hidden;
+}
+.run .p-run{
+    font-size: 2.2vh;
+    color: #fff;
+    margin-top: 4%;
+    text-align: center;
+}
+.run-cons{
+    width: 85%;
+    height: 180px;
+}
+.run-con{
+    width: 100%;
+    height: 45px;
+    border-bottom: 0.1vh dashed #fff;
+    float: left;
+    box-sizing: border-box;
+    margin-top: 2.5%;
+}
+.run-con p{
+    float: left;
+    font-size: 1.6vh;
+    color: #fff;
+}
+.run-con span{
+    float: right;
+    font-size: 1.6vh;
+    color: #fff;
+}
+.run-con h3{
+    font-size: 1.6vh;
+    color: #fff;
+    margin-bottom: 1%;
+}
+/* 运营区结束 */
+/* 右区域结束 */
