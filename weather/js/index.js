@@ -93,9 +93,9 @@ function getWeek(){
     })
 }
 
-function setLife(arr){
+function setLife(res){
     var str="";
-    arr.forEach(item=>{
+    res.forEach(item=>{
         str+=`
         <div class="swiper-slide">
             <img src="./img/life_clothes.png" alt="">
@@ -105,15 +105,7 @@ function setLife(arr){
             </div>
         </div>`
     })
-    $(".swiper-wrapper").html(str);
-
-
-
-    // var mySwiper = new Swiper ('.swiper-container', {
-    //     loop: true, // 循环模式选项
-    //     centeredSlides : true,
-    //     slidesPerView: 1.3,
-    //   })    
+    $(".swiper-wrapper").html(str); 
     
     var swiper = new Swiper('.swiper-container', {
         effect: 'coverflow',
@@ -121,8 +113,6 @@ function setLife(arr){
         spaceBetween: '18%',
         slidesPerView: 'auto',
         loop: true,
-        autoplay: false,
-        //   loopedSlides: 2,
         coverflowEffect: {
             rotate: 0,
             stretch: 0,
@@ -133,8 +123,8 @@ function setLife(arr){
     });
 }
 
-function setAir(obj){
+function setAir(res){
     var boxWidth=parseInt($(".air .quality").css("width"));
-    var num=(obj.air/boxWidth)*100+"%";
+    var num=(res.air/boxWidth)*100+"%";
     $(".air .quality img").css("left",num);
 }
