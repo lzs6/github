@@ -137,21 +137,28 @@ section ul li:last-child{
 	color: #000000;
 }
 .first .content{
-    width: 200%;
+    width: 100%;
     height: 5.11rem;
-    overflow: hidden;
+    overflow:scroll;
 }
-.first .content>div{
+.first .content::-webkit-scrollbar {
+    display: none;
+}
+.first .contentx{
+    width: 150%;
+    height: 100%;
+}
+.first .contentx>div{
     width: 3.09rem;
     height: 5.11rem;
     margin-right: 0.24rem;
     float: left;
     background: #ffffff;
 }
-.first .content>div img:first-child{
+.first .contentx>div img:first-child{
     width: 100%;
 }
-.first .content>div p:nth-child(2)::before{
+.first .contentx>div p:nth-child(2)::before{
     width: 0.21rem;
     height: 0.01rem;
     content: '';
@@ -160,36 +167,36 @@ section ul li:last-child{
     left: 0.03rem;
     top: -0.09rem;
 }
-.first .content>div p:nth-child(2){
+.first .contentx>div p:nth-child(2){
     font-size: 0.18rem;
     color: #000;
     margin: 0.09rem auto 0.1rem;
     position: relative;
     margin-left: 0.18rem;
 }
-.first .content>div p:nth-child(3){
+.first .contentx>div p:nth-child(3){
     font-size: 0.24rem;
     color: #000;
     margin-top: 0.1rem;
     margin-left: 0.18rem;
 }
-.first .content>div div{
+.first .contentx>div div{
     width:100%;
     height:0.43rem;
     margin-top: 0.79rem;
     text-align: center;
     line-height: 0.43rem;
 }
-.first .content>div div span{
+.first .contentx>div div span{
     width: 0.79rem;
     height: 0.21rem;
     color: #000;
     font-size: 0.26rem;
 }
-.first .content>div div span:nth-child(2){
+.first .contentx>div div span:nth-child(2){
     font-size: 0.18rem;
 }
-.first .content>div div input{
+.first .contentx>div div input{
     width: 1.52rem;
     height: 0.43rem;
     margin-right: 0.23rem;
@@ -203,7 +210,7 @@ section ul li:last-child{
     border: none;
     outline: none;
 }
-.first .content>div img:last-child{
+.first .contentx>div img:last-child{
     width: 0.45rem;
     height: 0.55rem;
     position: absolute;
