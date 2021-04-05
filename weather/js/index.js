@@ -3,7 +3,6 @@ $(function(){
     getToday();
     getWeek();
 })
-
 function getDate(){
     $.ajax({
         type:"get",
@@ -11,7 +10,7 @@ function getDate(){
         data:{
             appid:"49924983",
             appsecret:"mxwQi3Vc",
-            version:"v6",
+            version:"v62",
         },
         success:function(res){
             $(".city").text(res.country);
@@ -23,54 +22,38 @@ function getDate(){
         }
     })
 }
-
-function getImg(res){
-    switch (res){
-        case "晴":
-            return "qing"
-        case "多云":
-            return "yun"
-        case "阴":
-            return "yin"
-        case "小雨":
-            return "yu"
-    }
-}
-
 function getToday(){
     $.ajax({
         type:"get",
         url:"https://tianqiapi.com/api",
         data:{
-            appid:"99486933",
-            appsecret:"af13EFeX",
-            version:"v1",
+            appid:"49924983 ",
+            appsecret:"mxwQi3Vc ",
+            version:"v62",
         },
         success:function(res){
-            var hourList=res.data[0].hours;
+            var hourList=res.hours;
             var str="";
             hourList.forEach(item=> {
-                item.day=item.day.slice(3,6)
                 str+=`
                 <li>
-                    <span>${item.day}</span>
+                    <span>${item.hours}</span>
                     <img src="./img/${getImg(item.wea)}.png" alt="">
-                    <span>${item.tem}</span>
+                    <span>${item.tem}°</span>
                 </li>` 
-            });
+            } );
             $(".real ul").html(str);
         }
     })
 }
-
 function getWeek(){
     $.ajax({
         type:"get",
         url:"https://tianqiapi.com/api",
         data:{
-            appid:"99486933",
-            appsecret:"af13EFeX",
-            version:"v1",
+            appid:"49924983 ",
+            appsecret:"mxwQi3Vc ",
+            version:"v9",
         },
         success:function(res){
             var dayList=res.data;
@@ -81,18 +64,35 @@ function getWeek(){
                         <span>${item.week}</span>
                         <img src="./img/${item.wea_img}.png" alt="">
                         <div class="numb">
-                            <span>${item.tem1}</span>
-                            <span>${item.tem2}</span>
+                            <span>${item.tem1}°</span>
+                            <span>${item.tem2}°</span>
                         </div>
                     </li>`
             });
             $(".thisWeek ul").html(str);
             setLife(res.data[0].index);
-            setAir(res.data[0]);
+            setAir(res.data[0].air);
         }
     })
 }
-
+function getImg(res){
+    switch (res){
+        case "晴":
+            return "qing"
+        case "多云":
+            return "yun"
+        case "阴转多云":
+            return "yun"    
+        case "阴":
+            return "yin"
+        case "小雨":
+            return "yu"
+        case "中雨":
+            return "yu"
+        case "大雨":
+            return "yu"
+    }
+}
 function setLife(res){
     var str="";
     res.forEach(item=>{
@@ -105,8 +105,7 @@ function setLife(res){
             </div>
         </div>`
     })
-    $(".swiper-wrapper").html(str); 
-    
+    $(".swiper-wrapper").html(str);   
     var swiper = new Swiper('.swiper-container', {
         effect: 'coverflow',
         centeredSlides: true,
@@ -122,9 +121,8 @@ function setLife(res){
         }
     });
 }
-
 function setAir(res){
     var boxWidth=parseInt($(".air .quality").css("width"));
-    var num=(res.air/boxWidth)*100+"%";
+    var num=(res/boxWidth)*100+"%";
     $(".air .quality img").css("left",num);
 }
