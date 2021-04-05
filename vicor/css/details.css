@@ -307,7 +307,7 @@ line-height: 0.34rem;
     width: 85%;
     margin: 0 auto 1.07rem;
 }
-.thingDetails img:nth-child(3){
+.thingDetails img:nth-child(3),.thingDetails img:nth-child(5){
     width: 100%;
 }
 .scenario_title{

@@ -40,12 +40,12 @@ img:hover{
 div:hover{
 	outline: #4BC6CA 2px solid;
 }
-@media screen and (max-width:900px){
+@media screen and (max-width:1000px){
 	.like{
-		float: none;
 		width: 60%;
 		height: 10rem;
-		margin:50px auto ;
+		margin:50px auto;
+		float: none;
 	}
 	img{
 		width: 2rem;

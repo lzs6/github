@@ -9,9 +9,11 @@ body{
 	height: 712px;
 	border: #000000 6px solid;
 	position: absolute;
+	top: 0;
 	left: 0;
 	right: 0;
-	margin:5px auto;
+	bottom: 0;
+	margin:auto;
 }
 .k div{
 	width: 400px;
