@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/u-reset.css">
+    <link rel="stylesheet" href="css/lyb.css">
+</head>
+<body>
+    <p class="title">留言建议</p>
+    <ul>
+    
+    </ul>
+    <div class="right">
+    <form action="">
+        <input type="text" placeholder="姓名" required pattern="^[\u4E00-\u9FA5]{2,}$">
+        <input type="text" placeholder="联系电话" required pattern="^(13[0-9]|15[012356789]|18[0-9]|17[678]|14[57])[0-9]{8}$">
+        <input type="text" placeholder="电子邮件" required pattern="^\w+@\w+\.\w+$">
+        <textarea name="" id="" cols="25" rows="10" placeholder="您的建议" maxlength="100" required></textarea>
+        <p>您可以最多输入100个字，您当前输入的字数为<span class="num">0</span></p>
+        <input type="submit" value="提交">
+    </form>
+    </div>
+</body>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/lyb.js"></script>
+</html>
