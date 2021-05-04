@@ -164,39 +164,41 @@ nav .nav li:hover{
 nav .nav li:last-child{
     border: none;
 }
-.lbt1{
+.winDow{
     width: 100%;
     height: 432px;
     position: relative;
 }
-.lbt1 div{
+.lbt{
     width: 100%;
-    height:100%;
+    height: 100%;
+    position: relative; 
+}
+.lbt li{
+    width: 100%;
+    height: 100%;
     position: absolute;
     left: 0;
-    right: 0;
+    top: 0;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-.lbt1 .d{
+.lbd{
     width: 10%;
     height: 5px;
     position: absolute;
     left: 0;
     right: 0;
-    bottom:20px;
+    bottom: 20px;
     margin: auto;
 }
-.lbt1 .d li{
+.lbd li{
     width: 12%;
     height: 5px;
     background: #a5acab;
     float: left;
     margin-left: 4%;
     cursor: pointer;
-}
-.lbt1 .d li:hover{
-    background: cornsilk;
 }
 main{
     width: 100%;

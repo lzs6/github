@@ -77,16 +77,16 @@
             </li>
         </ul>
     </nav>
-    <div class="lbt1">
-            <a href="">
-                <div style="background-image: url(./img/医院nav1.jpg);"></div>
-                <div style="background-image: url(./img/医院nav2.jpg);"></div>
-                <div style="background-image: url(./img/医院nav3.jpg);"></div>
-                <div style="background-image: url(./img/医院nav4.jpg);"></div>
-                <div style="background-image: url(./img/医院nav5.jpg);"></div>
-            </a>
-        <ul class="d">
-            <li></li>
+    <div class="winDow">
+        <ul class="lbt">
+                <li style="background-image: url(./img/医院nav1.jpg)"></li>
+                <li style="background-image: url(./img/医院nav2.jpg)"></li>
+                <li style="background-image: url(./img/医院nav3.jpg)"></li>
+                <li style="background-image: url(./img/医院nav4.jpg)"></li>
+                <li style="background-image: url(./img/医院nav5.jpg)"></li>
+        </ul>
+        <ul class="lbd">
+            <li style="background: rgb(180, 60, 60);"></li>
             <li></li>
             <li></li>
             <li></li>
@@ -264,8 +264,45 @@
         </ul>
     </div>
 <script src="./js/jquery-3.4.1.min.js"></script>
+<script src="./js/aniMath  opacity.js"></script>
 <script src="./js/hospital.js"></script>
 <script>
+    var lbt=document.querySelectorAll('.lbt li');
+    var lbd=document.querySelectorAll('.lbd li');
+    var winDow=document.querySelector('.winDow');
+    var num=0;
+    function change(){
+        for (var i = 0; i < lbd.length; i++) {
+            lbd[i].style.background='cadetblue';
+            animate(lbt[i],{opacity:0},1000,Tween.Back.easeIn);
+        }
+        lbd[num].style.background='rgb(180, 60, 60)';
+        animate(lbt[num],{opacity:1},1000,Tween.Back.easeIn);
+    }
+    var t=setInterval(move,3000)
+    function move(){
+        num++;
+        if(num==lbt.length){num=0;} 
+        change();
+    }
+    winDow.onmouseover=function(){
+        clearInterval(t);
+    }
+    winDow.onmouseout=function(){
+      t=setInterval(move,3000);
+    }
+    var flag=true;
+    for (let j = 0; j < lbd.length; j++) {
+       lbd[j].onclick=function(){
+        if (!flag) {
+            return;
+        }
+        flag =false;
+        num=j;
+        change();
+       }
+    }
+
     var xx0=document.querySelectorAll('.nr1 .left .left-x li');
     var xx=document.querySelectorAll('.lbt2-x li');
     var nr=document.querySelectorAll('.lbt2-x-k .k');

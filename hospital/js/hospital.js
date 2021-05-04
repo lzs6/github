@@ -42,26 +42,7 @@ $(function() {
 
 
 
-    $('.lbt1 .d li:first-child').mouseover(function () { 
-        $('.lbt1 div:first-child').fadeIn(2000);
-        $('.lbt1 div:first-child').siblings('div').fadeOut(1000);
-    });
-    $('.lbt1 .d li:nth-child(2)').mouseover(function () { 
-        $('.lbt1 div:nth-child(2)').fadeIn(2000);
-        $('.lbt1 div:nth-child(2)').siblings('div').fadeOut(1000);
-    });
-    $('.lbt1 .d li:nth-child(3)').mouseover(function () { 
-        $('.lbt1 div:nth-child(3)').fadeIn(2000);
-        $('.lbt1 div:nth-child(3)').siblings('div').fadeOut(1000);
-    });
-    $('.lbt1 .d li:nth-child(4)').mouseover(function () { 
-        $('.lbt1 div:nth-child(4)').fadeIn(2000);
-        $('.lbt1 div:nth-child(4)').siblings('div').fadeOut(1000);
-    });
-    $('.lbt1 .d li:nth-child(5)').mouseover(function () { 
-        $('.lbt1 div:nth-child(5)').fadeIn(2000);
-        $('.lbt1 div:nth-child(5)').siblings('div').fadeOut(1000);
-    });
+
     $('main .lbt2 .rw li:nth-child(7)').click(function () { 
         $('main .lbt2 div:first-child').fadeIn(2000);
         $('main .lbt2 div:first-child').siblings('div').fadeOut(1000);
