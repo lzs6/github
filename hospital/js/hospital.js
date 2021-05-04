@@ -71,4 +71,4 @@ $(function() {
         $('main .lbt2 div:nth-child(7)').fadeIn(2000);
         $('main .lbt2 div:nth-child(7)').siblings('div').fadeOut(1000);
     });
-})
+})//a
