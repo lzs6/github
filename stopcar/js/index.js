@@ -176,8 +176,7 @@ let option = {
              emphasis: {
                  label: {
                      show: true,
-                     fontSize: '30',
-                     fontWeight: 'bold'
+                     fontSize: '10'
                  }
              },
              labelLine: {
@@ -223,8 +222,7 @@ let option = {
              emphasis: {
                  label: {
                      show: true,
-                     fontSize: '30',
-                     fontWeight: 'bold'
+                     fontSize: '10',
                  }
              },
              labelLine: {
