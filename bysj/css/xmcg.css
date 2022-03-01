@@ -4,7 +4,7 @@ html{
     font-size: calc(100vw / 1600 * 100);
 }
 body{
-	background:url("../images/u=685870564,1629873953&fm=26&gp=0.jfif");
+	background: #BDB1A3 ;
 	background-size: cover;
 	font-size: 16px;
 }

@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>5</title>
+<style>
+    body{
+	   background: rgb(34, 34, 34);
+       color: aliceblue;
+    }
+</style>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/LZS博客.js"></script>
+</head>
+
+<body>
+	<h2 >Python</h2>
+<ol>
+<li><h6 >python的代码运行方式：</h6>
+<ul>
+<li>通过新建.py后缀文件，在命令行cd定位到文件目录后输入<code>python 文件名</code></li>
+<li>直接在命令窗口输入<code>python</code>，然后回车，在下一行输入想要运行的代码</li>
+
+</ul>
+</li>
+<li><h6 >python的输入输出：</h6>
+<ul>
+<li>输入：input()</li>
+<li>输出：print()</li>
+
+</ul>
+</li>
+<li><h6 >python语法：</h6>
+<ul>
+<li><p>代码缩进</p>
+<ul>
+<li>如果省略缩进，Python 会出错</li>
+<li>空格数取决于程序员，但至少需要一个</li>
+<li>您必须在同一代码块中使用相同数量的空格，否则 Python 会出错</li>
+
+</ul>
+</li>
+<li><p>注释</p>
+<ul>
+<li>注释以 ＃ 开头，Python 将忽略它们</li>
+
+</ul>
+</li>
+<li><p>变量</p>
+<ul>
+<li>在 Python 中，变量是在为其赋值时创建的</li>
+<li>Python 没有声明变量的命令</li>
+
+</ul>
+</li>
+<li><p>内置数据类型</p>
+<ul>
+<li><figure><table>
+<thead>
+<tr><th style='text-align:left;' >示例</th><th style='text-align:left;' >数据类型</th></tr></thead>
+<tbody><tr><td style='text-align:left;' >x = &quot;Hello World&quot;</td><td style='text-align:left;' >str</td></tr><tr><td style='text-align:left;' >x = 29</td><td style='text-align:left;' >int</td></tr><tr><td style='text-align:left;' >x = 29.5</td><td style='text-align:left;' >float</td></tr><tr><td style='text-align:left;' >x = 1j</td><td style='text-align:left;' >complex</td></tr><tr><td style='text-align:left;' >x = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;]</td><td style='text-align:left;' >list</td></tr><tr><td style='text-align:left;' >x = (&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;)</td><td style='text-align:left;' >tuple</td></tr><tr><td style='text-align:left;' >x = range(6)</td><td style='text-align:left;' >range</td></tr><tr><td style='text-align:left;' >x = {&quot;name&quot; : &quot;Bill&quot;, &quot;age&quot; : 63}</td><td style='text-align:left;' >dict</td></tr><tr><td style='text-align:left;' >x = {&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;}</td><td style='text-align:left;' >set</td></tr><tr><td style='text-align:left;' >x = frozenset({&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;})</td><td style='text-align:left;' >frozenset</td></tr><tr><td style='text-align:left;' >x = True</td><td style='text-align:left;' >bool</td></tr><tr><td style='text-align:left;' >x = b&quot;Hello&quot;</td><td style='text-align:left;' >bytes</td></tr><tr><td style='text-align:left;' >x = bytearray(5)</td><td style='text-align:left;' >bytearray</td></tr><tr><td style='text-align:left;' >x = memoryview(bytes(5))</td><td style='text-align:left;' >memoryview</td></tr></tbody>
+</table></figure>
+</li>
+
+</ul>
+</li>
+<li><p>获取数据类型</p>
+<ul>
+<li>您可以使用 type() 函数获取任何对象的数据类型</li>
+
+</ul>
+</li>
+<li><p>必要时使用强制类型转换</p>
+<ul>
+<li><pre><code class='language-python' lang='python'>x = 10 # int
+# 把整数转换为浮点数
+a = float(x)
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>字符串</p>
+<ul>
+<li><p>字符串的裁剪：可以使用裁切语法返回一定范围的字符。指定开始索引和结束索引，以<strong>冒号</strong>分隔，以返回字符串的一部分</p>
+<ul>
+<li><pre><code class='language-python' lang='python'>b = &quot;Hello, World!&quot;
+print(b[2:5])
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>如需获取字符串的长度，请使用 len() 函数</p>
+</li>
+
+</ul>
+</li>
+<li><p>字符串方法：<strong>注释：</strong>所有字符串方法都返回新值。它们不会更改原始字符串</p>
+<ul>
+<li><figure><table>
+<thead>
+<tr><th style='text-align:left;' >方法</th><th style='text-align:left;' >描述</th></tr></thead>
+<tbody><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_capitalize.asp'>capitalize()</a></td><td style='text-align:left;' >把首字符转换为大写。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_casefold.asp'>casefold()</a></td><td style='text-align:left;' >把字符串转换为小写。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_center.asp'>center()</a></td><td style='text-align:left;' >返回居中的字符串。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_count.asp'>count()</a></td><td style='text-align:left;' >返回指定值在字符串中出现的次数。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_encode.asp'>encode()</a></td><td style='text-align:left;' >返回字符串的编码版本。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_endswith.asp'>endswith()</a></td><td style='text-align:left;' >如果字符串以指定值结尾，则返回 true。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_expandtabs.asp'>expandtabs()</a></td><td style='text-align:left;' >设置字符串的 tab 尺寸。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_find.asp'>find()</a></td><td style='text-align:left;' >在字符串中搜索指定的值并返回它被找到的位置。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_format.asp'>format()</a></td><td style='text-align:left;' >格式化字符串中的指定值。</td></tr><tr><td style='text-align:left;' >format_map()</td><td style='text-align:left;' >格式化字符串中的指定值。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_index.asp'>index()</a></td><td style='text-align:left;' >在字符串中搜索指定的值并返回它被找到的位置。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_isalnum.asp'>isalnum()</a></td><td style='text-align:left;' >如果字符串中的所有字符都是字母数字，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_isalpha.asp'>isalpha()</a></td><td style='text-align:left;' >如果字符串中的所有字符都在字母表中，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_isdecimal.asp'>isdecimal()</a></td><td style='text-align:left;' >如果字符串中的所有字符都是小数，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_isdigit.asp'>isdigit()</a></td><td style='text-align:left;' >如果字符串中的所有字符都是数字，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_isidentifier.asp'>isidentifier()</a></td><td style='text-align:left;' >如果字符串是标识符，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_islower.asp'>islower()</a></td><td style='text-align:left;' >如果字符串中的所有字符都是小写，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_isnumeric.asp'>isnumeric()</a></td><td style='text-align:left;' >如果字符串中的所有字符都是数，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_isprintable.asp'>isprintable()</a></td><td style='text-align:left;' >如果字符串中的所有字符都是可打印的，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_isspace.asp'>isspace()</a></td><td style='text-align:left;' >如果字符串中的所有字符都是空白字符，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_istitle.asp'>istitle()</a></td><td style='text-align:left;' >如果字符串遵循标题规则，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_isupper.asp'>isupper()</a></td><td style='text-align:left;' >如果字符串中的所有字符都是大写，则返回 True。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_join.asp'>join()</a></td><td style='text-align:left;' >把可迭代对象的元素连接到字符串的末尾。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_ljust.asp'>ljust()</a></td><td style='text-align:left;' >返回字符串的左对齐版本。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_lower.asp'>lower()</a></td><td style='text-align:left;' >把字符串转换为小写。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_lstrip.asp'>lstrip()</a></td><td style='text-align:left;' >返回字符串的左修剪版本。</td></tr><tr><td style='text-align:left;' >maketrans()</td><td style='text-align:left;' >返回在转换中使用的转换表。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_partition.asp'>partition()</a></td><td style='text-align:left;' >返回元组，其中的字符串被分为三部分。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_replace.asp'>replace()</a></td><td style='text-align:left;' >返回字符串，其中指定的值被替换为指定的值。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_rfind.asp'>rfind()</a></td><td style='text-align:left;' >在字符串中搜索指定的值，并返回它被找到的最后位置。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_rindex.asp'>rindex()</a></td><td style='text-align:left;' >在字符串中搜索指定的值，并返回它被找到的最后位置。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_rjust.asp'>rjust()</a></td><td style='text-align:left;' >返回字符串的右对齐版本。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_rpartition.asp'>rpartition()</a></td><td style='text-align:left;' >返回元组，其中字符串分为三部分。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_rsplit.asp'>rsplit()</a></td><td style='text-align:left;' >在指定的分隔符处拆分字符串，并返回列表。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_rstrip.asp'>rstrip()</a></td><td style='text-align:left;' >返回字符串的右边修剪版本。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_split.asp'>split()</a></td><td style='text-align:left;' >在指定的分隔符处拆分字符串，并返回列表。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_splitlines.asp'>splitlines()</a></td><td style='text-align:left;' >在换行符处拆分字符串并返回列表。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_startswith.asp'>startswith()</a></td><td style='text-align:left;' >如果以指定值开头的字符串，则返回 true。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_strip.asp'>strip()</a></td><td style='text-align:left;' >返回字符串的剪裁版本。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_swapcase.asp'>swapcase()</a></td><td style='text-align:left;' >切换大小写，小写成为大写，反之亦然。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_title.asp'>title()</a></td><td style='text-align:left;' >把每个单词的首字符转换为大写。</td></tr><tr><td style='text-align:left;' >translate()</td><td style='text-align:left;' >返回被转换的字符串。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_upper.asp'>upper()</a></td><td style='text-align:left;' >把字符串转换为大写。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_string_zfill.asp'>zfill()</a></td><td style='text-align:left;' >在字符串的开头填充指定数量的 0 值。</td></tr></tbody>
+</table></figure>
+</li>
+
+</ul>
+</li>
+<li><p>python中特有的运算符</p>
+<ul>
+<li><p>逻辑运算符</p>
+<ul>
+<li><figure><table>
+<thead>
+<tr><th style='text-align:left;' >运算符</th><th style='text-align:left;' >描述</th><th style='text-align:left;' >实例</th></tr></thead>
+<tbody><tr><td style='text-align:left;' >and</td><td style='text-align:left;' >如果两个语句都为真，则返回 True。</td><td style='text-align:left;' >x &gt; 3 and x &lt; 10</td></tr><tr><td style='text-align:left;' >or</td><td style='text-align:left;' >如果其中一个语句为真，则返回 True。</td><td style='text-align:left;' >x &gt; 3 or x &lt; 4</td></tr><tr><td style='text-align:left;' >not</td><td style='text-align:left;' >反转结果，如果结果为 true，则返回 False</td><td style='text-align:left;' >not(x &gt; 3 and x &lt; 10)</td></tr></tbody>
+</table></figure>
+</li>
+
+</ul>
+</li>
+<li><p>身份运算符</p>
+<ul>
+<li><p>身份运算符用于比较对象，不是比较它们是否相等，但如果它们实际上是同一个对象，则具有相同的内存位置：</p>
+</li>
+<li><figure><table>
+<thead>
+<tr><th style='text-align:left;' >运算符</th><th style='text-align:left;' >描述</th><th style='text-align:left;' >实例</th></tr></thead>
+<tbody><tr><td style='text-align:left;' >is</td><td style='text-align:left;' >如果两个变量是同一个对象，则返回 true。</td><td style='text-align:left;' >x is y</td></tr><tr><td style='text-align:left;' >is not</td><td style='text-align:left;' >如果两个变量不是同一个对象，则返回 true。</td><td style='text-align:left;' >x is not y</td></tr></tbody>
+</table></figure>
+</li>
+
+</ul>
+</li>
+<li><p>成员运算符</p>
+<ul>
+<li><p>成员资格运算符用于测试序列是否在对象中出现：</p>
+</li>
+<li><figure><table>
+<thead>
+<tr><th style='text-align:left;' >运算符</th><th style='text-align:left;' >描述</th><th style='text-align:left;' >实例</th></tr></thead>
+<tbody><tr><td style='text-align:left;' >in</td><td style='text-align:left;' >如果对象中存在具有指定值的序列，则返回 True。</td><td style='text-align:left;' >x in y</td></tr><tr><td style='text-align:left;' >not in</td><td style='text-align:left;' >如果对象中不存在具有指定值的序列，则返回 True。</td><td style='text-align:left;' >x not in y</td></tr></tbody>
+</table></figure>
+</li>
+
+</ul>
+</li>
+<li><p>位运算符</p>
+<ul>
+<li><p>位运算符用于比较（二进制）数字：</p>
+</li>
+<li><figure><table>
+<thead>
+<tr><th style='text-align:left;' >运算符</th><th style='text-align:left;' >描述</th><th style='text-align:left;' >实例</th></tr></thead>
+<tbody><tr><td style='text-align:left;' >&amp;</td><td style='text-align:left;' >AND</td><td style='text-align:left;' >如果两个位均为 1，则将每个位设为 1。</td></tr><tr><td style='text-align:left;' >|</td><td style='text-align:left;' >OR</td><td style='text-align:left;' >如果两位中的一位为 1，则将每个位设为 1。</td></tr><tr><td style='text-align:left;' >^</td><td style='text-align:left;' >XOR</td><td style='text-align:left;' >如果两个位中只有一位为 1，则将每个位设为 1。</td></tr><tr><td style='text-align:left;' >~</td><td style='text-align:left;' >NOT</td><td style='text-align:left;' >反转所有位。</td></tr><tr><td style='text-align:left;' >&lt;&lt;</td><td style='text-align:left;' >Zero fill left shift</td><td style='text-align:left;' >通过从右侧推入零来向左移动，推掉最左边的位。</td></tr><tr><td style='text-align:left;' >&gt;&gt;</td><td style='text-align:left;' >Signed right shift</td><td style='text-align:left;' >通过从左侧推入最左边的位的副本向右移动，推掉最右边的位。</td></tr></tbody>
+</table></figure>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p>列表<strong>(List数组</strong>)：是一种有序和可更改的集合。允许重复的成员。使用<strong>[ a,b,c]</strong></p>
+<ul>
+<li><figure><table>
+<thead>
+<tr><th style='text-align:left;' >方法</th><th style='text-align:left;' >描述</th></tr></thead>
+<tbody><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_append.asp'>append()</a></td><td style='text-align:left;' >在列表的末尾添加一个元素</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_clear.asp'>clear()</a></td><td style='text-align:left;' >删除列表中的所有元素</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_copy.asp'>copy()</a></td><td style='text-align:left;' >返回列表的副本</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_count.asp'>count()</a></td><td style='text-align:left;' >返回具有指定值的元素数量。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_extend.asp'>extend()</a></td><td style='text-align:left;' >将列表元素（或任何可迭代的元素）添加到当前列表的末尾</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_index.asp'>index()</a></td><td style='text-align:left;' >返回具有指定值的第一个元素的索引</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_insert.asp'>insert()</a></td><td style='text-align:left;' >在指定位置添加元素</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_pop.asp'>pop()</a></td><td style='text-align:left;' >删除指定位置的元素</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_remove.asp'>remove()</a></td><td style='text-align:left;' >删除具有指定值的项目</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_reverse.asp'>reverse()</a></td><td style='text-align:left;' >颠倒列表的顺序</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_list_sort.asp'>sort()</a></td><td style='text-align:left;' >对列表进行排序</td></tr></tbody>
+</table></figure>
+</li>
+
+</ul>
+</li>
+<li><p>元组(<strong>Tuple</strong>)：是一种有序且不可更改的集合。允许重复的成员。使用<strong>( a,b,c)</strong></p>
+<ul>
+<li><figure><table>
+<thead>
+<tr><th style='text-align:left;' >方法</th><th style='text-align:left;' >描述</th></tr></thead>
+<tbody><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_tuple_count.asp'>count()</a></td><td style='text-align:left;' >返回元组中指定值出现的次数。</td></tr><tr><td style='text-align:left;' ><a href='https://www.w3school.com.cn/python/ref_tuple_index.asp'>index()</a></td><td style='text-align:left;' >在元组中搜索指定的值并返回它被找到的位置。</td></tr></tbody>
+</table></figure>
+</li>
+
+</ul>
+</li>
+<li><p>集合(<strong>Set</strong>)：是一个无序和无索引的集合。没有重复的成员。使用<strong>{ a,b,c}</strong></p>
+</li>
+<li><p>字典(<strong>Dictionary)</strong>：是一个无序，可变和有索引的集合。没有重复的成员。使用<strong>{ a:1,b:2,c:3}</strong></p>
+</li>
+<li><p>函数</p>
+<ul>
+<li>在 Python 中，使用 def 关键字定义函数</li>
+
+</ul>
+</li>
+<li><p>对象</p>
+<ul>
+<li><p>如需创建类，请使用 class 关键字</p>
+</li>
+<li><p>类的继承：要创建从其他类继承功能的类，请在创建子类时将父类作为参数发送</p>
+<ul>
+<li><pre><code class='language-python' lang='python'>class Student(Person):
+</code></pre>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p>作用域</p>
+<ul>
+<li>global 关键字使变量成为全局变量。</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ol>
+
+</body>
+</html>

@@ -53,6 +53,8 @@ header span:last-child{
     height: 100%;
     float: left;
     text-align: center;
+    box-sizing: border-box;
+    padding: 0.1rem 0.6rem;
 }
 @font-face {
     font-family: 'table';

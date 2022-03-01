@@ -1,0 +1,1147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>2</title>
+	<style>
+    body{
+	   background: rgb(34, 34, 34);
+       color: aliceblue;
+    }
+</style>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/LZS博客.js"></script>
+</head>
+<body>
+	<h2 >Js知识点</h2>
+<ol>
+<li><h6 >输入输出：</h6>
+<ul>
+<li>alert()弹出对话框</li>
+<li>confirm() 弹出可选择对话框</li>
+<li>console.log() 控制台</li>
+<li>console.dir() 查看原型中方法</li>
+<li>document.write() 输出到浏览器</li>
+<li>prompt() 弹出输入框，其内部输入的内容是字符串格式。</li>
+
+</ul>
+</li>
+<li><h6 >数据类型和运算符：</h6>
+<ul>
+<li><p>数据类型识别：typeof()返回值,如下表。中间6个是初始数据类型，最后一个是复杂类型(包括函数，数组)，简单类型和复杂类型的划分意义是使代码运行又多又快。</p>
+<figure><table>
+<thead>
+<tr><th style='text-align:center;' >类型</th><th style='text-align:center;' >结果</th></tr></thead>
+<tbody><tr><td style='text-align:center;' ><em>函数</em></td><td style='text-align:center;' ><em>&quot;function&quot;</em></td></tr><tr><td style='text-align:center;' >number</td><td style='text-align:center;' >&quot;number&quot;</td></tr><tr><td style='text-align:center;' >string</td><td style='text-align:center;' >&quot;string&quot;</td></tr><tr><td style='text-align:center;' >boolean</td><td style='text-align:center;' >&quot;boolean&quot;</td></tr><tr><td style='text-align:center;' >symbol</td><td style='text-align:center;' >&quot;symbol&quot;</td></tr><tr><td style='text-align:center;' >undefined</td><td style='text-align:center;' >&quot;undefined&quot;</td></tr><tr><td style='text-align:center;' >null</td><td style='text-align:center;' ><em>&quot;object&quot;</em></td></tr><tr><td style='text-align:center;' >任何其他对象</td><td style='text-align:center;' ><em>&quot;object&quot;</em></td></tr></tbody>
+</table></figure>
+</li>
+<li><p>+号：</p>
+<ul>
+<li>任何的数据类型和字符串相加，表示为连接，结果类型为string;</li>
+<li>数字与除字符串以外类型相加： 将其他类型转化为数字后(加时自调用Number()方法)算术相加，无法转化则结果为NaN</li>
+<li>NaN与除字符串以外类型相加结果都为NaN</li>
+
+</ul>
+</li>
+<li><p>++自加</p>
+<ul>
+<li>规则： i++ 相当于变量i自身值变大1，类似i+=1； i--同理 <code>++</code>可写在变量前或后： <code>i++</code>是先访问i然后再自增，而<code>++i</code>则是先自增然后再访问i的值</li>
+
+</ul>
+</li>
+<li><p>比较运算符</p>
+<ul>
+<li><p>将比较的对象尝试转化为数字,能转化则按照数字比较,不能转化则为false</p>
+</li>
+<li><p><code>NaN</code>与任意数据比较结果均为 false</p>
+</li>
+<li><p>字符串和字符串比较, 比较第一个字符的unicode编码值，第一个字符要是相同，就比较第二个，依次往下(ASCII码表在最末尾)</p>
+<pre><code class='language-javascript' lang='javascript'>注/ &#39;10000&#39; &lt; &#39;2&#39;   //1的unicode值比2的unicode值小  true       
+&#39;10000&#39; &gt; 2    //转成数字比较  true
+</code></pre>
+</li>
+<li><p>和全等于的区别</p>
+<ul>
+<li><p>是只比较两边的值(如果两边类型不相同，则先尝试着转化，然后再比较，所以耗时多)</p>
+<ul>
+<li>0==undefined (false)</li>
+<li>0==null (false)</li>
+<li>NaN == NaN (false)</li>
+<li>undefined==null (true)   //undefine底层是基于null的</li>
+
+</ul>
+</li>
+<li><p><code>===</code>比较两边的值和类型，都相等才返回true；</p>
+</li>
+
+</ul>
+</li>
+<li><p>===和object.js()的区别</p>
+<pre><code class='language-javascript' lang='javascript'>注/Object.is(+0,-0);               //false
++0===-0                         //true
+Object.is(NaN,NaN);             //true
+NaN===NaN                       //false
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>逻辑运算符：</p>
+<ul>
+<li>在JavaScript逻辑运算中，0、&quot;&quot;、null、false、undefined、NaN都会判为false，其他都为true</li>
+<li>短路原则：与或运算左侧结果已经确定整个表达式真假性，则右侧不再计算</li>
+
+</ul>
+</li>
+<li><p>Number() —— 任意类型数据转化为数字:</p>
+<ul>
+<li>&quot;&quot;(空字符串),null,false转化为0，true转为1，undefined、NaN以及非纯数字字符串转为NaN</li>
+<li>如果是字符串且其中只有数字，则转换为数字（10进制）会忽略前导0和后导0</li>
+
+</ul>
+</li>
+<li><p>parseInt() —— 任意类型数据转化为整数:</p>
+</li>
+<li><p>Boolean() —— 任意类型数据转化为布尔值</p>
+<ul>
+<li>转换结果是假：&quot;&quot;,null,undefined,0,false,NaN</li>
+<li>其它都为真</li>
+
+</ul>
+</li>
+<li><p>模板字符串：<code>${}</code></p>
+</li>
+<li><p>==只比较值，===比较值还比较类型</p>
+</li>
+
+</ul>
+</li>
+<li><h6 >运算符优先级：(由高到低)</h6>
+<ul>
+<li>小括号</li>
+<li>非</li>
+<li>算数运算符</li>
+<li>比较运算符</li>
+<li>赋值运算符</li>
+<li>逻辑运算符</li>
+<li>三元运算符</li>
+
+</ul>
+</li>
+<li><h6 >js变量名和方法名推荐使用小驼峰法</h6>
+<ul>
+<li>小驼峰法：除第一个单词全部小写外，其余单词首字母大写</li>
+<li>大驼峰法：全部单词首字母大写</li>
+
+</ul>
+</li>
+<li><h6 >函数：</h6>
+<ul>
+<li><p>函数声明(3种):</p>
+<ul>
+<li>具名函数：function a()</li>
+<li>匿名函数：var a=function()</li>
+<li>实例化构造函数：var a=new Function()</li>
+
+</ul>
+</li>
+<li><p>事件的调用：</p>
+<ul>
+<li>具名函数和匿名函数直接通过小括号调用</li>
+<li>通过事件调用</li>
+
+</ul>
+</li>
+<li><p>箭头函数(和一般的函数不同，箭头函数不会绑定this):</p>
+<pre><code class='language-javascript' lang='javascript'>(参数,参数) =&gt; {函数声明}
+</code></pre>
+<ul>
+<li>this对象的指向是可变的，但是在箭头函数中，它是固定的,它中的this和它本身作用域以外最近的出现过的this的指向相同。</li>
+<li>不能当做构造函数</li>
+<li>箭头函数没有arguments对象</li>
+
+</ul>
+</li>
+<li><p>函数参数：</p>
+<p>参数可以处理任何数据类型，当实参数量多于形参数量时函数内部使用arguments可获取相应参数，使用数组形式[] ；<code>arguments</code>对象不是数组，而是一个类似数组的对象，<strong>只能在函数内部使用</strong>。所以为了使用数组的方法，必须使用<code>Array.prototype.slice.call</code>先将其转为数组。</p>
+</li>
+<li><p>回调函数：</p>
+<p>把一个函数的指针作为另一个函数的参数</p>
+</li>
+<li><p>递归函数：</p>
+<p>在函数内部直接或间接引用自身，每个递归函数里必定会有终止条件。递归函数在公司明文禁用，原因就是每调用自己一次就会开辟一次空间，临界值不确定的话，可能会造成电脑死机。</p>
+</li>
+<li><p>闭包函数：</p>
+<p>一个函数在外部函数的内部，这个函数中有外部函数的声明变量，且这个函数作为外部函数的返回值存在时，当外部函数在全局被调用，作为返回值的这个函数在全局也被调用，外部函数中参数就会受到影响，达到了使一个局部变量常驻内存的效果，缺点就是常驻内存，会增大内存使用量，使用不当很容易造成内存泄漏</p>
+</li>
+<li><p>返回值return:</p>
+<ul>
+<li>返回值可以是任何数据类型</li>
+<li>每个函数都默认有返回值，如果一个函数没有写<code>return</code>，会默认返回<code>undefined</code>。</li>
+<li>一个函数只能有一个返回值(如果想返回多个值，则可以将多个值打包为数组或对象)。</li>
+<li>将函数运行结果返回</li>
+<li>停止并跳出当前函数 （不会执行return后面的语句）</li>
+
+</ul>
+</li>
+<li><p>函数作用域：</p>
+<ul>
+<li>全局变量可被局部变量访问，但全局变量不能访问局部变量，局部变量只能在自己函数内部使用，块作用域由 {} 包括，{}内部不能被外部访问，if语句和for语句里面的{ }都属于块作用域。</li>
+<li>就近原则</li>
+<li>全局变量和局部变量都用var声明，块级作用域用let声明，使用let进行for循环时每次循环所生成的块级作用域包含着当时i的值，这些块级作用域相互独立，互不影响，这就解释了为什么当for循环已经结束了，回调函数还是可以输出上次和上上次循环时的i值。<u>不用var声明直接为变量赋值，得到的不是真正的全局变量，它实际是对变量赋值操作，如果作用域链中有已经声明的该变量，那他相当于赋值，否则相当于在全局中声明且被赋值</u>。<u>变量在作为函数的参数时，相当于在函数内部进行了声明</u>，当调用一次函数，系统就会为其开辟一块空间，当函数调用结束后，空间进行销毁。</li>
+
+</ul>
+</li>
+<li><p>var、let、const变量声明方式比较：</p>
+<ul>
+<li>var声明的变量在全局中有效，并且同一个变量可以声明多个</li>
+<li>let、const声明的变量只能在块作用域之内生效，并且同一个变量不可以声明第二次</li>
+<li>let声明的变量可以再次赋值，但const声明的变量只能赋值一次，相当于声明常量</li>
+
+</ul>
+</li>
+<li><p>预解析：</p>
+<ul>
+<li><p>按<script></script>块依次来解析的</p>
+</li>
+<li><p>按执行环境来解析</p>
+<ul>
+<li>全局环境：打开页面解析</li>
+<li>函数环境：调用该函数的时候解析</li>
+
+</ul>
+</li>
+<li><p>遇到关键字var和function时，提前解析到内存中(var和function关键字提前解析到内存，但var解析只会把=号前面的变量名解析进去，=后的值不会解析进去，但function整个函数都会被解析进去。)，在预解析时，当函数名和变量名相同时，函数名优先。</p>
+</li>
+<li><p>如果还有<script></script>块，再按上述顺序来解析</p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><h6 >数据解构：解构使得处理返回值更加方便</h6>
+<ul>
+<li><p>数组解构：</p>
+<pre><code class='language-javascript' lang='javascript'>var [one, two, three] = [1,2,3];
+console.log(one); // 1
+console.log(two); // 2
+console.log(three); // 3
+</code></pre>
+</li>
+<li><p>对象解构：</p>
+<pre><code class='language-javascript' lang='javascript'>let { first: f, last: l } = { first: &#39;hello&#39;, last: &#39;world&#39; };
+f // &#39;hello&#39;
+l // &#39;world&#39;
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><h6 >JSON.stringify()和toString()用法与区别：</h6>
+<ul>
+<li><p>当对象为数组时：[1,2,3]</p>
+<ul>
+<li><strong>用JSON.stringify()的结果是&quot;[1,2,3]&quot;，保留原有格式的字符串模式</strong></li>
+<li><strong>那么用toString的结果是&quot;1,2,3&quot;，直接将数组内容转为字符串格式</strong></li>
+
+</ul>
+</li>
+<li><p>当对象不是数组时：{obj1,obj2}</p>
+<ul>
+<li><strong>toString会转为[obj1,obj2]</strong></li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><h6 >数组的拆分：</h6>
+<ul>
+<li><p>扩展运算符（spread）是三个点<code>...</code>。它好比 函数<code>rest</code> 参数的逆运算，将一个数组转为用逗号分隔的参数序列，还可以将一个一组数据转换为数组。</p>
+<ul>
+<li><pre><code class='language-javascript' lang='javascript'>console.log(...[1, 2, 3])        // 1 2 3
+console.log(1, ...[2, 3, 4], 5)  // 1 2 3 4 5
+let arr = [...iterator]; //转换为数组
+</code></pre>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><h6 >length属性：</h6>
+<p>字符串、数组、函数以及函数内部的arguements对象都有length属性。函数的length属性，将返回没有指定默认值的参数个数，仅包括第一个具有默认值之前的参数个数。</p>
+</li>
+<li><h6 >图片精灵:</h6>
+</li>
+
+</ol>
+<ul>
+<li>图片精灵技术的作用就是为了减轻服务器负载，提高哦网页加载速度，将网页需要多个小图片整合成一张大图上，之后通过background-position属性进行单个图片显示。原先需访问多次服务器获取图片，现只获取一张图片即可。</li>
+
+</ul>
+<ol start='11' >
+<li><h6 >图片懒加载:</h6>
+</li>
+
+</ol>
+<ul>
+<li>有时候一个网页会包含很多的图片，页面图片多，加载的图片就多。服务器压力就会很大。
+为了解决以上问题，提高用户体验，就出现了懒加载方式来减轻服务器的压力，优先加载可视区域的内容，其他部分等进入了可视区域再加载，从而提高性能。</li>
+<li>实现懒加载有四个步骤，如下：
+1.加载loading图片
+2.判断哪些图片要加载【重点】
+3.隐形加载图片
+4.替换真图片</li>
+<li>图片距离网页顶部左上角的距离-视口高度=滚动条的高度，判断超出后再将地址赋值给src</li>
+
+</ul>
+<ol start='11' >
+<li><h6 >对象：</h6>
+<ul>
+<li><p>对象的创建（3种）：</p>
+<ul>
+<li>json格式创建     var obj={}</li>
+<li>实例化Object     var obj=new Object();</li>
+<li>实例化类  class</li>
+
+</ul>
+</li>
+<li><p>对象的增删改查：</p>
+<ul>
+<li>增改查：通过对象.方法名()或对象[&quot;属性名&quot;]</li>
+<li>删：对象=null或delete obj.a删除对象中的属性和方法</li>
+
+</ul>
+</li>
+<li><p>对象的拷贝：</p>
+<ul>
+<li><p>浅拷贝：拷贝地址，拷贝后依旧有关联</p>
+</li>
+<li><p>深拷贝：新开内存，将内容一起拷贝，拷贝后无关联了，深拷贝使用JSON时函数会丢失</p>
+</li>
+<li><p>深拷贝实现方法：</p>
+<ul>
+<li>递归遍历，逐层拷贝。 因为基础类型可以直接拷贝，所以通过递归遍历对象的每一层，全部得到基础类型后再拷贝。</li>
+<li>通过<code>JSON.stringify()</code>先将对象转化为字符串，字符串赋值后再通过<code>JSON.parse()</code>转化回对象。</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p>new操作符：</p>
+<ul>
+<li>创建了一个空对象obj</li>
+<li>将这个空对象的<strong>proto</strong>成员指向了Base函数对象prototype成员对象。相当于obj拥有了Base原型上的属性方法</li>
+<li>将Base函数对象的this指针替换成obj，然后再调用Base函数，于是就给obj对象赋值了一个name和age成员变量。相当于obj拥有了Base构造函数上的属性方法</li>
+
+</ul>
+</li>
+<li><p>this的指向：</p>
+<ul>
+<li>在普通函数中this指<code>window</code>全局对象                      //function show(){ this=&gt;window}</li>
+<li>作为对象方法调用，this 指代调用该方法对象        //person={this=&gt;person}</li>
+<li>在构造函数中this指向构造函数的实例                   //var cat=new Animal(this=&gt;cat)</li>
+<li>在事件中，this指向事件源</li>
+<li>在call和apply中,this指的是方法中传入的对象，如果apply中没有传对象，this指向window</li>
+
+</ul>
+</li>
+<li><p>call、apply和bind改变this指向(call和apply立即执行函数并改变指针对象，但bind只是先改变了指针对象，函数执行还需后加()调用)</p>
+<ul>
+<li>函数名.call(要指向的对象，参数1，参数2·······)</li>
+<li>函数名.apply(要指向的对象，[参数1，参数2])</li>
+<li>函数名.bind(要指向的对象，参数1，参数2······)()</li>
+
+</ul>
+</li>
+<li><p>判断一个数据是不是数组：</p>
+<pre><code class='language-javascript' lang='javascript'>var arr1 = [], arr2 = {}
+ 
+ arr1 instanceof Array   // true
+ arr2 instanceof Array   // false
+</code></pre>
+<pre><code>
+</code></pre>
+</li>
+<li><p>原型prototype()：</p>
+<ul>
+<li><p>每次使用工厂函数或构造函数，内部的属性和方法都会在内存中重新开辟一个控件存储生成的对象，导致某些相同的方法或属性被重复保存，占用内存。</p>
+</li>
+<li><p><strong>prototype方法</strong>（会把共享的方法或属性放到代码段中来存储,它不能共享对象）,节省空间</p>
+</li>
+<li><p>每一个函数本身都有一个prorotype原型方法，但prototype不能在未声明完毕的函数内部使用，因为只有他在声明完一个函数之后他才具有prototype方法，当在外部给prototype原型赋值时，相当于在原protopyte方法内部新增新的属性方法，不会覆盖。</p>
+</li>
+<li><p>通常构造函数和原型一起使用</p>
+</li>
+<li><pre><code class='language-javascript' lang='javascript'>function Animal(){   this.nose=&#39;a&#39;;//构造函数中放私有}Animal.prototype={   eat:function(food){   alert(food)//原型中放公有 }}var cat= new Animal();    // 将父类(Animal)的实例作为子类(Cat)的原型cat.eat(&#39;fish&#39;)  // 弹出 &#39;fish&#39;
+</code></pre>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><h6 >遍历：</h6>
+<ul>
+<li><p>遍历对象：</p>
+<pre><code class='language-javascript' lang='javascript'>for (var i in obj) {console.log(obj[i]);//i是存储属性名的变量，所以访问该属性时必须通过[]}
+</code></pre>
+</li>
+<li><p>遍历数组(for、for in、for of(只会将索引为数字的下标遍历出来)循环语句都可以，数组有自己的遍历方法forEach())</p>
+<pre><code class='language-javascript' lang='javascript'>arr.forEach(function(value,index){  console.log(index,value)})
+</code></pre>
+</li>
+<li><p>遍历字符串</p>
+<ul>
+<li><pre><code class='language-javascript' lang='javascript'>for(var i=0;i&lt;str.length;i++){console.log(str[i]);//i是下标}
+</code></pre>
+<p>&nbsp;</p>
+</li>
+<li><pre><code class='language-javascript' lang='javascript'>for (var i in str) {console.log(str[i]);//i是下标}
+</code></pre>
+<p>&nbsp;</p>
+</li>
+<li><pre><code class='language-javascript' lang='javascript'>for (var i of str) {console.log(str);}
+</code></pre>
+<p>&nbsp;</p>
+</li>
+<li><p>先将字符串进行split()分割，再利用Array.of将这组字符串转为数组，最后遍历数组就可以了</p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><h6 >样式属性：</h6>
+<ul>
+<li>标签中默认的属性既可以用点和[]又可以用getAttribute()访问(class特殊，使用className)，但自己设置的属性，不能同时用两种方式访问，用点自定义的只能用点访问，在标签中不显示。setAttribute()自定义的属性只能用getAttribute()访问，并且可以在标签中显示。</li>
+<li>因为用点、[]以及getAttribute()方法访问不到样式表中属性和值，所以使用window.getComputedStyle(对象).样式属性  获取样式表中属性值。</li>
+<li>设置样式时使用点style。</li>
+<li>H5标签中可以通过设置<strong>data-键=&#39;值&#39;</strong>的方式给元素设置自定义属性，该属性被设置到dataset中，通过js获取时可以使用<strong>对象.dataset.键</strong>的方式进行获取属性值，通过jQuery获取时，使用<strong>对象.data(&#39;键&#39;)</strong>的方式进行获取属性值</li>
+
+</ul>
+</li>
+<li><h6 >事件</h6>
+<ul>
+<li><p>事件监听：为一个事件添加多个事件处理程序   element.addEventListener(event,callback,bool);</p>
+<p>event值不带on，且bool为flase（默认）时，表示冒泡阶段调用，true表示捕获阶段调用</p>
+</li>
+<li><p>事件委托：把事件处理器添加到父元素，等待子元素事件冒泡，并且父元素能够通过target（IE为srcElement）判断是哪个子元素，从而做相应处理。</p>
+<ul>
+<li>判断内容 innerHTML innerText</li>
+<li>标签名 nodeName (判断的时候，标签名需要大写)</li>
+<li>属性 e.target.hasAttribute(&quot;属性名&quot;); 有则是true 无则是false</li>
+<li>类名 ID e.target.classList.contains(&quot;类名&quot;)； 有则是true 无则是false</li>
+
+</ul>
+</li>
+<li><p>事件流的坏处及解决方案：阻止浏览器默认行为用prevent。阻止不容易触发的事件使用stoppropagation()，容易触发的事件mousemove需要改变html结构，mouseover和mouseout需要用mouseenter和mouseleave自动阻止事件冒泡</p>
+</li>
+
+</ul>
+</li>
+<li><h6 >js异步：</h6>
+<ul>
+<li><a href='https://www.cnblogs.com/xiaoshen666/p/11358897.html' target='_blank' class='url'>https://www.cnblogs.com/xiaoshen666/p/11358897.html</a></li>
+
+</ul>
+</li>
+<li><h6 >元素的尺寸位置：</h6>
+<ul>
+<li>offsetWidth和offsetHeight是元素整个尺寸大小</li>
+<li>offsetLeft和offsetTop是元素相对具有定位属性的父辈元素的位置</li>
+<li>offsetX和offsetY是鼠标相对于事件源的位置</li>
+<li>clientX和clientY表示鼠标相对于浏览器的位置</li>
+<li>clientWidth和clientHeight表示元素包含内容和补白的尺寸大小</li>
+<li>clientLeft和clientTop表示元素边框的尺寸大小</li>
+<li>scrolleft和scrolltop表示水平和垂直滚动条已滑动的距离</li>
+<li>scrollWidth和scrollHeigh表示页面的宽高，使用document.documentElement调用</li>
+<li>screenX和screenY，当对象为window时表示浏览器相对于屏幕的位置，当对象为event时表示鼠标相对于屏幕的位置</li>
+<li>screenWidth和screenHight，对象为window，表示屏幕的宽高大小</li>
+<li>innerWidth和innerHeight，对象为window，表示浏览器内宽(即视口宽度)</li>
+<li>outerWidth和outerHeight</li>
+
+</ul>
+</li>
+<li><h6 >BOM：</h6>
+<ul>
+<li><p>window对象</p>
+<ul>
+<li><h3 >window对象属性</h3>
+<figure><table>
+<thead>
+<tr><th>属性</th><th>描述</th><th>可读写性</th><th>兼容性</th></tr></thead>
+<tbody><tr><td>innerWidth</td><td>浏览器窗口宽度</td><td>只读</td><td>&gt;ie8</td></tr><tr><td>innerHeight</td><td>浏览器窗口高度</td><td>只读</td><td>&gt;ie8</td></tr><tr><td>screen.width</td><td>屏幕宽度(分辨率)</td><td>只读</td><td>全部</td></tr><tr><td>screen.height</td><td>屏幕高度(分辨率)</td><td>只读</td><td>全部</td></tr><tr><td>top</td><td>返回窗口体系中的最顶层窗口的引用</td><td>只读</td><td>全部</td></tr></tbody>
+</table></figure>
+</li>
+<li><h3 >window对象方法</h3>
+<figure><table>
+<thead>
+<tr><th>属性</th><th>参数</th><th>返回值</th><th>功能</th><th>兼容性</th></tr></thead>
+<tbody><tr><td>alert</td><td>string</td><td>undefined</td><td>弹出带有一段消息和一个确认按钮的警告框</td><td>全部</td></tr><tr><td>confirm</td><td>string</td><td>boolean</td><td>弹出带有一段消息以及确认按钮和取消按钮的对话框</td><td>全部</td></tr><tr><td>prompt</td><td>string</td><td>undefined</td><td>弹出可提示用户输入的对话框</td><td>全部</td></tr><tr><td>open</td><td>url</td><td>新窗口的window对象引用</td><td>通过脚本打开新的窗口</td><td>全部</td></tr><tr><td>close</td><td>无</td><td>undefined</td><td>关闭当前浏览器窗口</td><td>全部</td></tr><tr><td>scrollBy</td><td>xpos,ypos</td><td>undefined</td><td>在窗口中按指定的偏移量滚动文档</td><td>全部</td></tr><tr><td>scrollTo</td><td>xpos,ypos</td><td>undefined</td><td>在窗口中将文档滚动到指定位置</td><td>全部</td></tr></tbody>
+</table></figure>
+</li>
+<li><figure><table>
+<thead>
+<tr><th>属性</th><th>参数</th><th>返回值</th><th>功能</th><th>兼容性</th></tr></thead>
+<tbody><tr><td>setInterval</td><td><code>callback,time(ms)[,param]</code></td><td>该时间函数的id值，可用于取消执行</td><td>按照指定时间间隔执行回调函数</td><td>全部(IE9及一下版本不支持该第三个参数)</td></tr><tr><td>clearInterval</td><td>name</td><td>undefined</td><td>清除指定时间函数进程</td><td>全部</td></tr><tr><td>setTimeout</td><td><code>callback,time(ms)[,param]</code></td><td>该时间函数的id值，可用于取消执行</td><td>在指定的时间后执行回调函数</td><td>全部</td></tr><tr><td>clearTimeout</td><td>name</td><td>undefined</td><td>清除指定的延时函数进程</td><td>全部</td></tr></tbody>
+</table></figure>
+<p><code>setInterval</code> 与 <code>clearTimeout</code>参数分别是</p>
+<ol>
+<li>callback： 必填。 函数，代表指定时间后执行该段代码</li>
+<li>time： 必填。 时间间隔，以毫秒计，不写单位</li>
+<li>param： 可选。传给执行函数的其他参数，多个参数以<code>,</code>隔开(IE9 及其更早版本不支持该参数)</li>
+
+</ol>
+<p>callback回调函数可直接写到 <code>setInterval</code> 和 <code>setTimeout</code> 参数中，也可只写一个函数名:</p>
+<pre><code class='language-javascript' lang='javascript'>注/setInterval(run,1000)function run(){    console.log(1)}// 上下相同setInterval(function run(){    console.log(1)},1000)
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>location对象</p>
+<ul>
+<li><figure><table>
+<thead>
+<tr><th>属性</th><th>描述</th><th>可读写性</th><th>结果</th></tr></thead>
+<tbody><tr><td>href</td><td>包含整个URL的一个字符串</td><td>读写</td><td><code>http://www.baidu.com:80/javascript/001/BOM/?file=README.md#location对象</code></td></tr><tr><td>origin</td><td>包含页面来源的域名的标准形式字符串</td><td>只读</td><td><code>http://www.baidu.com:80</code></td></tr><tr><td>protocol</td><td>包含URL对应协议的字符串，最后有一个&quot;:&quot;</td><td>只读</td><td><code>http:</code></td></tr><tr><td>host</td><td>包含了域名和端口号的字符串，如没有端口号则只有域名</td><td>只读</td><td><code>www.baidu.com:80</code></td></tr><tr><td>hostname</td><td>包含URL域名的字符串</td><td>只读</td><td><code>www.baidu.com</code></td></tr><tr><td>port</td><td>包含端口号的字符串</td><td>只读</td><td><code>80</code></td></tr><tr><td>pathname</td><td>包含URL中路径部分的字符串，开头有一个&quot;/&quot;</td><td>只读</td><td><code>/javascript/001/BOM/</code></td></tr><tr><td>search</td><td>包含URL参数（查询字符串）的字符串，开头有一个“?”</td><td>只读</td><td><code>?file=README.md</code></td></tr><tr><td>hash</td><td>包含块标识符的字符串，开头有一个&quot;#&quot;</td><td>只读</td><td><code>#location对象</code></td></tr></tbody>
+</table></figure>
+<h3 >location 对象方法</h3>
+<figure><table>
+<thead>
+<tr><th>属性</th><th>参数</th><th>返回值</th><th>功能</th><th>兼容性</th></tr></thead>
+<tbody><tr><td>assign</td><td>url</td><td>undefined</td><td>加载给定URL的内容资源</td><td>全部</td></tr><tr><td>reload</td><td>Boolean</td><td>undefined</td><td>重新加载来自当前 URL的资源(刷新本页)</td><td>全部</td></tr><tr><td>replace</td><td>url</td><td>undefined</td><td>用给定的URL替换掉当前的资源</td><td>全部</td></tr><tr><td>toString</td><td>无</td><td>包含整个URL的字符串</td><td>获取本窗口的url(只能获取，无法修改，读取效果与<code>location.href</code>相同)</td><td>全部</td></tr></tbody>
+</table></figure>
+<blockquote><p><code>location.assign</code> 与 <code>location.replace</code>的区别: <code>replace()</code>替换的新页面不会被保存在会话的历史 History中，这意味着用户将不能用后退按钮转到该页面</p>
+</blockquote>
+<p><code>location.reload</code> 的参数：</p>
+<ul>
+<li>false或未写参数：检测服务器上的文档是否已改变。如果文档已改变，reload() 会再次下载该文档。如果文档未改变，则该方法将从缓存中装载文档。这与用户单击浏览器的刷新按钮的效果是完全一样的。</li>
+<li>true：那么无论文档的最后修改日期是什么，它都会绕过缓存，从服务器上重新下载该文档。这与用户在单击浏览器的刷新按钮时按住 Shift 健的效果是完全一样。</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p>history对象</p>
+<h3 >history 对象属性</h3>
+<figure><table>
+<thead>
+<tr><th>属性</th><th>描述</th><th>可读写性</th><th>兼容性</th></tr></thead>
+<tbody><tr><td>length</td><td>包含当前页面在内的历史记录个数</td><td>只读</td><td>全部</td></tr></tbody>
+</table></figure>
+<h3 >history 对象方法</h3>
+<figure><table>
+<thead>
+<tr><th>属性</th><th>参数</th><th>返回值</th><th>功能</th><th>兼容性</th></tr></thead>
+<tbody><tr><td>back</td><td>无</td><td>undefined</td><td>加载 history 列表中的前一个 URL(等价于history.go(-1))</td><td>全部</td></tr><tr><td>forward</td><td>无</td><td>undefined</td><td>加载 history 列表中的下一个 URL(等价于history.go(1))</td><td>全部</td></tr><tr><td>go</td><td>number</td><td>undefined</td><td>通过当前页面的相对位置从浏览器历史记录加载页面</td><td>全部</td></tr><tr><td>pushState</td><td>state, title, url</td><td>undefined</td><td>无刷新的向浏览器 历史最前方 加入一条记录</td><td>&gt;ie9</td></tr><tr><td>replaceState</td><td>state, title, url</td><td>undefined</td><td>无刷新的使用一条记录替换当前的历史记录</td><td>&gt;ie9</td></tr></tbody>
+</table></figure>
+<ul>
+<li><p>history.go方法</p>
+<ul>
+<li>history.go(-1)： 加载上一个历史记录</li>
+<li>history.go(1)： 加载下一个历史记录</li>
+<li>history.go(0) 或不传参： 刷新本页 类似地，你可以传递参数值2并向前移动2个页面，等等。
+如果已经没有页面，该方法不会报错，页面不会发生任何变化； 如果参数不是整数，页面也不会发生任何变化。</li>
+
+</ul>
+</li>
+<li><p><code>history.pushState</code> 和 <code>history.replaceState</code> 方法有3个参数</p>
+<ul>
+<li><strong>状态对象state</strong> —— 需要保存的数据，这个数据在触发<code>popstate</code>事件时保存在<code>event.state</code>上</li>
+<li><strong>标题title</strong> —— 浏览器目前不识别该参数，传入一个空字符串</li>
+<li><strong>地址URL</strong> —— 需要更改的url地址</li>
+
+</ul>
+</li>
+
+</ul>
+<blockquote><p><code>window.onpopstate</code>事件： 浏览器点击前进后退(或者在js中调用<code>history.back()</code>、<code>history.forward()</code>、<code>history.go()</code>方法)时触发的事件。<code>event.state</code>可以获取当前<code>url</code>下设置的<code>state</code>。</p>
+</blockquote>
+<p><em>注：<code>pushState</code> 和 <code>replaceState</code>方法只能加载同源下的资url源（存在跨域问题）</em></p>
+<pre><code class='language-javascript' lang='javascript'>注/window.onpopstate = function (event) {    console.log(&quot;location: &quot; + document.location + &quot;, state: &quot; + JSON.stringify(event.state));};//绑定事件处理函数.history.pushState({ page: 1 }, &quot;title 1&quot;, &quot;?page=1&quot;);    //添加并激活一个历史记录条目 http://example.com/example.html?page=1,条目索引为1history.pushState({ page: 2 }, &quot;title 2&quot;, &quot;?page=2&quot;);    //添加并激活一个历史记录条目 http://example.com/example.html?page=2,条目索引为2history.replaceState({ page: 3 }, &quot;title 3&quot;, &quot;?page=3&quot;); //修改当前激活的历史记录条目 http://ex..?page=2 变为 http://ex..?page=3,条目索引为3history.back(); // 输出 &quot;location: http://example.com/example.html?page=1, state: {&quot;page&quot;:1}&quot;history.back(); // 输出 &quot;location: http://example.com/example.html, state: nullhistory.go(2);  // 输出 &quot;location: http://examp
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><h6 >Math对象的常用方法：</h6>
+<figure><table>
+<thead>
+<tr><th>方法</th><th>方法描述</th></tr></thead>
+<tbody><tr><td>Math.abs(x)</td><td>返回x的绝对值。</td></tr><tr><td><strong>Math.round(x)</strong></td><td>返回x四舍五入之后的整数值</td></tr><tr><td><strong>Math.ceil(x)</strong></td><td>返回x的近似值，向上取整</td></tr><tr><td><strong>Math.floor(x)</strong></td><td>返回x的近似值，向下取整</td></tr><tr><td><strong>Math.max(x,y)</strong></td><td>返回x,y中的最大值</td></tr><tr><td><strong>Math.min(x,y)</strong></td><td>返回x,y中的最小值</td></tr><tr><td><strong>Math.random()</strong></td><td>返回一个0~1之间的数字</td></tr><tr><td>Math.trunc(x)</td><td>将x的小数部分去除，返回整数部分(ie不能使用)</td></tr><tr><td><strong>Math.pow(x,y)</strong></td><td>取x的y次幂</td></tr><tr><td>Math.sqrt(x)</td><td>返回x的平方根</td></tr><tr><td>Math.sin(x)</td><td>返回x的正弦值</td></tr><tr><td>Math.cos(x)</td><td>返回x的余弦值</td></tr><tr><td>Math.tan(x)</td><td>返回x的正切值</td></tr><tr><td>Math.asin(x)</td><td>返回x的反正弦值</td></tr><tr><td>Math.acos(x)</td><td>返回x的反余弦值</td></tr><tr><td>Math.atan(x)</td><td>返回x的反正切值</td></tr><tr><td>NumberObject.toFixed(num)</td><td>可把 Number 四舍五入为指定小数位数的数字</td></tr></tbody>
+</table></figure>
+</li>
+<li><h6 >String对象(16)：</h6>
+<ul>
+<li><p>对字符串的任何操作都不会改变原字符串</p>
+</li>
+<li><p>对字符串的操作有(11)：</p>
+<ul>
+<li>将多个字符串进行拼接                                                                     //增</li>
+<li>在字符串开头或结尾处添加字符串以达到指定长度                         </li>
+<li>去除字符串左右的空格(不包括中间)                                                //删</li>
+<li>替换第一个要求被替换的字符串                                                      //改</li>
+<li>将起始下标到结束下标(不包括结束下标)的字符串或根据截取长度进行截取(只有起始下标时，从起始到最后全部截取)</li>
+<li>以某一字符串为界线进行分割(分割完的字符串中会将此字符串删除)</li>
+<li>将字符串中的字符转为大小写</li>
+<li>由下标得到对应字符串                                                                   //查</li>
+<li>由下标得到对应的ASSIC码</li>
+<li>由某个字符串得到第一个对应字符串的下标</li>
+<li>看某个字符串是否存在</li>
+
+</ul>
+</li>
+
+</ul>
+<h3 >str.charAt(index);</h3>
+<ul>
+<li>功能：返回下标为index的子字符串</li>
+<li>参数: 数字下标</li>
+<li>返回值: 对应下标字符串</li>
+
+</ul>
+<h3 >str.charCodeAt(index);</h3>
+<ul>
+<li>功能: 根据下标，返回对应下标的字符的ACSCII码</li>
+<li>参数: 数字下标</li>
+<li>返回值: 对应下表字符ACSCII码</li>
+
+</ul>
+<h3 >String.fromCharCode(97);</h3>
+<ul>
+<li>功能: 将ACSCII码转化成字符串，涉及到数字与字母之间的转化可以使用该方法</li>
+<li>参数: 十进制ACSCII码</li>
+<li>返回值: ACSCII码对应字符串</li>
+
+</ul>
+<h3 >str.indexOf(&#39;a&#39;);</h3>
+<ul>
+<li><p>功能： 查找一个字符或者字符串在字符串中第一次出现的位置,<strong>未找到则返回-1</strong>、</p>
+</li>
+<li><p>参数： 要查找的字符串</p>
+</li>
+<li><p>返回值： 目标字符串的下标位置，未找到则未-1</p>
+<pre><code class='language-javascript' lang='javascript'>var str=&#39;hello world&#39;;str.indexOf(&#39;a&#39;);         //-1str.indexOf(&#39;o&#39;);        //4
+</code></pre>
+</li>
+
+</ul>
+<h3 >str.lastIndexOf(&#39;a&#39;)</h3>
+<ul>
+<li><p>功能： 倒序查找一个字符或者字符串在字符串中第一次出现的位置,返回位置，,</p>
+<p>未找到则返回-1</p>
+<p>、</p>
+<pre><code class='language-javascript' lang='javascript'>var str=&#39;hello world&#39;;str.lastIndexOf(&#39;o&#39;);      //7
+</code></pre>
+</li>
+
+</ul>
+<h3 >str.replace(&quot;替换的内容&quot;,&quot;替换后的内容&quot;)</h3>
+<ul>
+<li><p>功能： 将指定的字符串替换，<strong>只能替换第一个</strong></p>
+</li>
+<li><p>参数： 1. 要替换的内容； 2. 替换后的内容</p>
+</li>
+<li><p>返回值： 返回替换后的字符串</p>
+</li>
+<li><p>注意： 不修改原字符串，所以使用时需要将</p>
+<pre><code>replace
+</code></pre>
+<p>方法的返回值保存</p>
+<pre><code class='language-javascript' lang='javascript'>var str=&#39;hello world&#39;;str.replace(&#39;o&#39;,&#39;a&#39;);        //&quot;hella world&quot;
+</code></pre>
+<blockquote><p><code>replace</code>支持正则查找，str.replace(/正则/,&quot;替换后的内容&quot;)</p>
+</blockquote>
+</li>
+
+</ul>
+<h3 >str.slice(起始下标,结束下标)</h3>
+<ul>
+<li>功能：字符串截取，识别负数，跟数组相同</li>
+<li>参数：1. 截取起始下标； 2. 截取结束下标。参数可以是负数，负数表示倒数，只传一个参数表示从起始下标截取到最后</li>
+<li>返回值：返回值是截取到的字符串</li>
+<li>注意： 截取时，包含起始下标，不包含结束下标； 不修改原字符串</li>
+
+</ul>
+<h3 >str.substring(起始下标,结束下标)</h3>
+<ul>
+<li>功能： 字符串截取，同<code>slice</code>方法，但不识别负数</li>
+
+</ul>
+<h3 >str.substr(起始下标，截取的长度)</h3>
+<ul>
+<li>功能：根据长度进行字符串截取</li>
+<li>参数： 1. 起始下标； 2. 截取的长度</li>
+
+</ul>
+<h3 >str.split(&#39;&#39;)</h3>
+<ul>
+<li><p>功能： 以某一字符串将目标字符串分割，可用于将特定格式的字符串转化如<code>2018/10/20</code></p>
+</li>
+<li><p>参数： 需要分割的字符串</p>
+</li>
+<li><p>返回值： 原字符串呗参数字符串分割之后的<strong>数组</strong></p>
+</li>
+<li><p>注意： 返回值中传入的字符串会被删掉，不修改原字符串</p>
+<pre><code class='language-javascript' lang='javascript'>var str=&#39;hello world&#39;;console.log(str.split(&#39;o&#39;));   //[&quot;hell&quot;, &quot; w&quot;, &quot;rld&quot;]console.log(str.split(&#39;&#39;));    //[&quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;, &quot; &quot;, &quot;w&quot;, &quot;o&quot;, &quot;r&quot;, &quot;l&quot;, &quot;d&quot;]
+</code></pre>
+</li>
+
+</ul>
+<h3 >str.toLowerCase()</h3>
+<ul>
+<li>将str字符串中的字符转化为小写，不修改原字符串</li>
+
+</ul>
+<h3 >str.toUpperCase()</h3>
+<ul>
+<li>将str字符串中的字符转化为大写</li>
+
+</ul>
+<h3 >str.trim()</h3>
+<ul>
+<li><p>将字符串左右空格去除，可用于接收表单数据 IE9以下不识别</p>
+</li>
+<li><p>返回值： 去掉左右空格之后的字符串</p>
+<pre><code class='language-javascript' lang='javascript'>var a=&#39;   aa   bb   &#39;;a.trim();       //&quot;aa   bb&quot;
+</code></pre>
+</li>
+
+</ul>
+<h3 >str.match()</h3>
+<ul>
+<li><p>在字符串内检索指定的值，或找到一个或多个正则表达式的匹配</p>
+</li>
+<li><p>参数： 可以是字符串或者正则表达式</p>
+</li>
+<li><p>返回值：检索到的结果</p>
+<pre><code class='language-javascript' lang='javascript'>var str=&#39;hello world&#39;;str.match(&#39;o&#39;);   //[&quot;o&quot;, index: 4, input: &quot;hello world&quot;, groups: undefined]str.match(/o/g);   // (2) [&quot;o&quot;, &quot;o&quot;]
+</code></pre>
+</li>
+
+</ul>
+<h3 >str.concat(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;)</h3>
+<ul>
+<li>功能： 用于连接两个或多个字符串,与数组中的concat方法很象，不会修改原字符串</li>
+<li>参数： 多个字符串</li>
+<li>返回值：拼接之后的长字符串</li>
+
+</ul>
+<h3 >str.padStart() 、str.padEnd()</h3>
+<ul>
+<li><p>功能： 向字符串开头(padStart)或结尾(padEnd)添加字符，使字符串达到指定的长度。返回在原字符串开头或末尾填充指定的填充字符串直到目标长度所形成的新字符串</p>
+</li>
+<li><p>参数1: 当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。</p>
+</li>
+<li><p>参数2: （可选）填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。</p>
+</li>
+<li><p>注意事项</p>
+<ul>
+<li>不写第二个参数填充字符串，则默认用空格填充</li>
+<li>填充字符串会自动重复直到达到目标长度</li>
+<li>如果原字符串长度已经大于等于目标长度，则直接返回原字符串</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><h6 >Array对象(20)：</h6>
+<ul>
+<li><p>对数组操作后，1~7改变原数组，8~20不改变原数组</p>
+</li>
+<li><p>对数组的操作(14)：</p>
+<ul>
+<li><p>多个数组的连接                                                                         //增</p>
+<p>                     //此段之后操作都会改变原数组//</p>
+</li>
+<li><p>向数组的开头末尾添加元素 (可以一次添加多个)                       </p>
+</li>
+<li><p>任意位置删除和添加元素                                                          //增和删</p>
+</li>
+<li><p>在数组的开头末尾删除元素 (只能删除一个)                             //删</p>
+</li>
+<li><p>数组的排序和数组的倒序                                                         //改 </p>
+<p>                    //此段之前操作都会改变原数组//</p>
+</li>
+<li><p>使用分隔符将数组数据转为字符串</p>
+</li>
+<li><p>将对象中的类数组以及将一组值转为数组</p>
+</li>
+<li><p>将起始下标到结束下标(不包括结束下标)的数组值进行截取(只有起始下标时，从起始到最后全部截取)</p>
+</li>
+<li><p>数组按条件进行映射</p>
+</li>
+<li><p>数组的遍历                                                                               //查</p>
+</li>
+<li><p>数组按某个值查找第一次出现在数组中的下标位置</p>
+</li>
+<li><p>数组按某个值看其是否存在</p>
+</li>
+<li><p>数组按条件进行筛选</p>
+</li>
+<li><p>数组按条件进行判断</p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<ol>
+<li><p>arr.push(); 向数组的末尾追加元素</p>
+<ul>
+<li><p>会修改原数组</p>
+</li>
+<li><p>返回值：修改后的length值</p>
+</li>
+<li><p>可以追加多个</p>
+<pre><code class='language-javascript' lang='javascript'>arr[1,2,3];arr1[4,5,6];arr2[...arr,...arr1];       //  ...扩展运算符，将数组展开
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>arr.unshift(); 向数组的开头添加函数</p>
+<ul>
+<li>会修改原数组</li>
+<li>返回值：修改后的length值</li>
+<li>可以追加多个</li>
+
+</ul>
+</li>
+<li><p>arr.pop(); 删除末尾的元素</p>
+<ul>
+<li>会修改原数组</li>
+<li>返回值：被删除的数据</li>
+<li>只能删除一个</li>
+
+</ul>
+</li>
+<li><p>arr.shift(); 开头删除一个元素</p>
+<ul>
+<li>会修改原数组</li>
+<li>返回值：被删除的数据</li>
+<li>只能删除一个</li>
+
+</ul>
+</li>
+<li><p>arr.splice(位置，删除元素的个数，要追加的元素); 任意位置添加删除</p>
+<ul>
+<li>添加或者删除包含对应下标</li>
+<li>添加数据时：删除元素的个数写0；</li>
+<li>可以同时删除和添加（先删除，后添加）</li>
+<li>修改原数组</li>
+<li>返回值是被删除的值</li>
+
+</ul>
+</li>
+<li><p>arr.sort() 数组的排序</p>
+<ul>
+<li><p>如果没有参数，则从字符的编码开始按顺序排</p>
+</li>
+<li><p>如果有参数，这个参数必须是一个函数（回调函数）这个回调函数有两个参数，分别是a，b</p>
+</li>
+<li><p>修改原数组</p>
+</li>
+<li><p>返回值是排序之后的数组</p>
+<pre><code class='language-javascript' lang='javascript'>var arr3=[1,5,6,99,52,663,22,66,552,6,622];arr3.sort(function(a,b){//a-b 正序，//b-a 倒序，  return a-b;})console.log(arr3);// 控制台输出// (11) [1, 5, 6, 6, 22, 52, 66, 99, 552, 622, 663]//箭头函数arr.sort((a,b)=&gt;a-b)     //正序，arr.sort((a,b)=&gt;b-a)     //倒序，
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>arr.reverse() 数组倒序</p>
+<ul>
+<li><p>返回修改后的数组</p>
+</li>
+<li><p>改变原数组</p>
+<pre><code class='language-javascript' lang='javascript'>var arr=[1,5,8,6,9,4,2,3];console.log(arr.reverse());     // (8) [3, 2, 4, 9, 6, 8, 5, 1]console.log(arr);               // (8) [3, 2, 4, 9, 6, 8, 5, 1]
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>arr.join(&quot;分隔符&quot;) 使用分隔符将数组数据隔开变为字符串</p>
+<ul>
+<li>不修改原数组</li>
+<li>返回值是分隔好的字符串</li>
+
+</ul>
+</li>
+<li><p>arr.slice(截取的起始下标,结束下标) 数组的截取</p>
+<ul>
+<li>截取时，包含起始下标，不包含结束下标</li>
+<li>不修改原数组</li>
+<li>返回值是截取到的数组</li>
+<li>参数可以是负数，负数表示倒数，只传一个参数表示从起始下标截取到最后</li>
+
+</ul>
+</li>
+<li><p>arr.concat 多个数组的连接</p>
+</li>
+
+</ol>
+<ul>
+<li><p>不修改原数组</p>
+</li>
+<li><p>返回值是连接之后的新数组</p>
+<pre><code class='language-javascript' lang='javascript'>var arr1=[1,2,3];var arr2=[4,5,6];console.log(arr1.concat(arr2,[7,8,9]));// 控制台输出// (9) [1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+</li>
+
+</ul>
+<ol start='11' >
+<li><p>arr.indexOf(值); 查找某个值在数组中第一次出现的下标</p>
+<ul>
+<li><p>返回值是数据的下标，没有找到则返回-1</p>
+<pre><code class='language-javascript' lang='javascript'>var arr=[1,5,6,99,52,663,22,66,552,123,6,622];console.log(arr.indexOf(22));    //查找22在arr数组中的位置// 控制台输出// 6
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>arr.lastIndexOf(值); 倒叙查找某个值在数组中第一次出现的位置</p>
+</li>
+<li><p>arr.forEach() 遍历数组</p>
+<ul>
+<li><p>接收一个回调函数，回调函数第一个参数是 数组值</p>
+</li>
+<li><p>第二个参数是 下标</p>
+<pre><code class='language-javascript' lang='javascript'>var arr3=[1,5,6,99,52,663,22,66,552,6,622];arr3.forEach(function(value,index){  console.log(index,value)})// 箭头函数arr3.forEach((value,index)=&gt;{console.log(index,value)})
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>arr.filter() 过滤（根据条件筛选数组元素）</p>
+<ul>
+<li><p>根据回调函数的返回值进行元素筛选</p>
+<ul>
+<li>返回值是true，该元素会保留</li>
+<li>返回值是false，该元素跳过</li>
+
+</ul>
+</li>
+<li><p>不修改原数组</p>
+</li>
+<li><p>返回值是筛选之后的数组</p>
+<pre><code class='language-javascript' lang='javascript'>var arr=[1,5,6,99,52,663,22,66,552,123,6,622];var newArr =arr.filter(function(value,index){return value&gt;100;       //筛选arr数组中值大于100的元素；})console.log(newArr);// 控制台输出// (4) [663, 552, 123, 622]
+</code></pre>
+<pre><code class='language-javascript' lang='javascript'>var person = [{name: &quot;张三&quot;,age:20,sex: &quot;男&quot;},{name: &quot;李四&quot;,age:19,sex: &quot;女&quot;},{name: &quot;王五&quot;,age:22,sex: &quot;男&quot;},{name: &quot;赵六&quot;,age:21,sex: &quot;女&quot;}];var x =person.filter(function(value,index){return value.age&gt;20;           // 筛选出年龄大于20岁的学生// return value.sex==&quot;男&quot;;     //筛选出男同学})console.log(x);// 箭头函数arr.filter((value,index)=&gt;{return 判断条件})
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>arr.map() 映射 将数组中的所有数据按照条件改变，形成新数组</p>
+<ul>
+<li><p>将回调函数每次的返回值，组成一个新的数组</p>
+</li>
+<li><p>返回值是映射改变之后的数组</p>
+</li>
+<li><p>不修改原数组</p>
+<pre><code class='language-javascript' lang='javascript'>var arr=[1,5,6,99,52,663,22,66,552,123,6,622];// var end=arr3.map(function(value,index){//     return value*2;        //将数组中的所有元素都乘以2返回// });// 箭头函数var end = arr.map((value,index)=&gt;value*2);console.log(end);
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>arr.some() 判断 根据回调函数的判断条件来选择真假</p>
+<ul>
+<li><p>只要有一个回调函数返回值是true，最终some结果是true；</p>
+<pre><code class='language-javascript' lang='javascript'>var arr3=[1,5,6,99,52,663,22,66,552,123,6,622];var end=arr3.some(function(value,index){return value&lt;500;});console.log(end);     //true
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>arr.every() 判断 根据回调函数的判断条件来选择真假(与some比较记忆)</p>
+<ul>
+<li><p>只要有一个回调函数返回值是false，最终every结果是false；</p>
+<pre><code class='language-javascript' lang='javascript'>var arr3=[1,5,6,99,52,663,22,66,552,123,6,622];var end=arr3.every(function(value,index){return value&lt;500;});console.log(end);     //false
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>arr.includes()</p>
+<ul>
+<li><p>用于检查数组是否包含某元素，包含返回true，否则返回false</p>
+</li>
+<li><p>无法检测对象是否存在</p>
+</li>
+<li><p>假如只想知道某个值是否在数组中而并不关心它的索引位置，建议使用</p>
+<pre><code>includes()
+</code></pre>
+<p>。如果想获取一个值在数组中的位置，那么你只能使用</p>
+<pre><code>indexOf
+</code></pre>
+<p>方法。并且</p>
+<pre><code>includes()
+</code></pre>
+<p>可以识别NaN</p>
+<pre><code class='language-javascript' lang='javascript'>var arr = [1,2,{name:&quot;张三&quot;}]arr.includes(2)     // truearr.includes(4)     // falsearr.includes({name:&quot;张三&quot;})     // false
+</code></pre>
+</li>
+<li><p>可接收俩个参数：</p>
+<p>要搜索的值,搜索的开始索引</p>
+<pre><code class='language-javascript' lang='javascript'>注/[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;].includes(&#39;b&#39;)         // true[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;].includes(&#39;b&#39;, 1)      // true[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;].includes(&#39;b&#39;, 2)      // false
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>Array.from</p>
+<ul>
+<li><pre><code>Array.from
+</code></pre>
+<p> </p>
+<p>方法用于将两类对象转为真正的数组：类似数组的对象和可遍历的对象（包括 ES6 新增的数据结构 Set 和 Map）        //数字:值</p>
+<pre><code class='language-javascript' lang='javascript'>var a={length:2,0:&#39;aaa&#39;,1:&#39;bbb&#39;};  Array.from(a);        //[&#39;aaa&#39;,&#39;bbb&#39;]// 原理：Array.prototype.slice.call(a);var b={length:2};  Array.from(b);       //[undefined.undefined]
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>Array.of</p>
+<ul>
+<li><p><code>Array.of</code>方法用于将一组值，转换为数组。</p>
+</li>
+<li><pre><code>Array.of
+</code></pre>
+<p>总是返回参数值组成的数组。如果没有参数，就返回一个空数组。</p>
+<pre><code class='language-javascript' lang='javascript'>Array.of() // []Array.of(undefined) // [undefined]Array.of(1) // [1]Array.of(1, 2) // [1, 2]
+</code></pre>
+</li>
+
+</ul>
+</li>
+
+</ol>
+</li>
+<li><h6 >Date对象：</h6>
+<h3 >获取日期信息的方法</h3>
+<figure><table>
+<thead>
+<tr><th style='text-align:left;' >方法</th><th style='text-align:left;' >含义</th></tr></thead>
+<tbody><tr><td style='text-align:left;' >getDate()</td><td style='text-align:left;' >从 Date 对象返回一个月中的某一天 (1 ~ 31)</td></tr><tr><td style='text-align:left;' >getDay()</td><td style='text-align:left;' >从 Date 对象返回一周中的某一天 (0 ~ 6)</td></tr><tr><td style='text-align:left;' >getMonth()</td><td style='text-align:left;' >从 Date 对象返回月份 (0 ~ 11)</td></tr><tr><td style='text-align:left;' >getFullYear()</td><td style='text-align:left;' >从 Date 对象以四位数字返回年份</td></tr><tr><td style='text-align:left;' >getHours()</td><td style='text-align:left;' >返回 Date 对象的小时 (0 ~ 23)</td></tr><tr><td style='text-align:left;' >getMinutes()</td><td style='text-align:left;' >返回 Date 对象的分钟 (0 ~ 59)</td></tr><tr><td style='text-align:left;' >getSeconds()</td><td style='text-align:left;' >返回 Date 对象的秒数 (0 ~ 59)</td></tr><tr><td style='text-align:left;' >getMilliseconds()</td><td style='text-align:left;' >返回 Date 对象的毫秒(0 ~ 999)</td></tr><tr><td style='text-align:left;' >getTime()</td><td style='text-align:left;' >返回 1970 年 1 月 1 日至今的毫秒数</td></tr><tr><td style='text-align:left;' >getTimezoneOffset()</td><td style='text-align:left;' >返回本地时间与格林威治标准时间 (GMT) 的分钟差</td></tr></tbody>
+</table></figure>
+<h3 >设置日期的方法</h3>
+<figure><table>
+<thead>
+<tr><th style='text-align:left;' >方法</th><th style='text-align:left;' >含义</th></tr></thead>
+<tbody><tr><td style='text-align:left;' >setDate()</td><td style='text-align:left;' >设置 Date 对象中月的某一天 (1 ~ 31)</td></tr><tr><td style='text-align:left;' >setMonth()</td><td style='text-align:left;' >设置 Date 对象中月份 (0 ~ 11)</td></tr><tr><td style='text-align:left;' >setFullYear()</td><td style='text-align:left;' >设置 Date 对象中的年份（四位数字）</td></tr><tr><td style='text-align:left;' >setHours()</td><td style='text-align:left;' >设置 Date 对象中的小时 (0 ~ 23)</td></tr><tr><td style='text-align:left;' >setMinutes()</td><td style='text-align:left;' >设置 Date 对象中的分钟 (0 ~ 59)</td></tr><tr><td style='text-align:left;' >setSeconds()</td><td style='text-align:left;' >设置 Date 对象中的秒钟 (0 ~ 59)</td></tr><tr><td style='text-align:left;' >setMilliseconds()</td><td style='text-align:left;' >设置 Date 对象中的毫秒 (0 ~ 999)</td></tr><tr><td style='text-align:left;' >setTime()</td><td style='text-align:left;' >以毫秒设置 Date 对象</td></tr><tr><td style='text-align:left;' >setUTCDate()</td><td style='text-align:left;' >根据世界时设置 Date 对象中月份的一天 (1 ~ 31)</td></tr><tr><td style='text-align:left;' >setUTCMonth()</td><td style='text-align:left;' >根据世界时设置 Date 对象中的月份 (0 ~ 11)</td></tr><tr><td style='text-align:left;' >setUTCFullYear()</td><td style='text-align:left;' >根据世界时设置 Date 对象中的年份（四位数字）</td></tr><tr><td style='text-align:left;' >setUTCHours()</td><td style='text-align:left;' >根据世界时设置 Date 对象中的小时 (0 ~ 23)</td></tr><tr><td style='text-align:left;' >setUTCMinutes()</td><td style='text-align:left;' >根据世界时设置 Date 对象中的分钟 (0 ~ 59)</td></tr><tr><td style='text-align:left;' >setUTCSeconds()</td><td style='text-align:left;' >根据世界时设置 Date 对象中的秒钟 (0 ~ 59)</td></tr><tr><td style='text-align:left;' >setUTCMilliseconds()</td><td style='text-align:left;' >根据世界时设置 Date 对象中的毫秒 (0 ~ 999)</td></tr></tbody>
+</table></figure>
+<h2 >获取时间戳的方法</h2>
+<pre><code>var timestamp1 = Date.parse(new Date()); // 结果：1477808630000 不推荐这种办法，毫秒级别的数值被转化为000var timestamp2 = (new Date()).valueOf(); // 结果：1477808630404 通过valueOf()函数返回指定对象的原始值获得准确的时间戳值var timestamp3 = new Date().getTime(); // 结果：1477808630404 ，通过原型方法直接获得当前时间的毫秒值，准确var timetamp4 = Number(new Date()) ; //结果：1477808630404 ,将时间转化为一个number类型的数值，即时间戳Date.now()           //返回当前时间的时间戳
+</code></pre>
+</li>
+<li><p>正则对象：</p>
+<ul>
+<li><h4 >实例化 RegExp对象</h4>
+<ul>
+<li><pre><code class='language-javascript' lang='javascript'>格式：var reg=new RegExp(正则表达式,模式修正符);var arr=[&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;];var str=&quot;aaffddxxccrbbrffdd&quot;;function mingan(arr,str){  arr.forEach((value,index)=&gt;{    var reg=new RegExp(value,&quot;g&quot;);    str=str.replace(reg,&quot;**&quot;);  })  return str;}console.log(mingan(arr,str));console.log(str);
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><h3 >RegExp的方法</h3>
+<ul>
+<li><p>test(字符串);
+判断字符串是否符合正则的匹配，返回值是一个Boolean值</p>
+</li>
+<li><p>exec(字符串);
+查询字符串中符合正则匹配的内容，返回值是数组。如果没有发现匹配，则返回 null。</p>
+<ul>
+<li>结果是数组</li>
+<li>index：查询到结果的下标</li>
+<li>input： 被查询到的字符串</li>
+<li>如果正则表达式没有设置g，那么exec方法不会对正则表达式有任何的影响。 如果设置了g，那么exec执行之后会更新正则表达式的lastIndex属性，表示本次匹配后，所匹配字符串的下一个字符的索引，下一次再用这个正则表达式匹配字符串的时候就会从上次的lastIndex属性开始匹配。</li>
+
+</ul>
+</li>
+<li><pre><code class='language-javascript' lang='javascript'>var str=&quot;I love antzone ,this is animate&quot;;var reg=/an/g;console.log(reg.exec(str));
+</code></pre>
+<p>&nbsp;</p>
+</li>
+
+</ul>
+</li>
+<li><p>原子</p>
+<ul>
+<li>/d表示匹配0到9之间的一个数字</li>
+<li>/w表示匹配数字、字母、下划线</li>
+<li>/s表示匹配空格</li>
+<li>.表示匹配除换行和结束符以外的任意字符</li>
+<li>大写表示除小写表示之外的字符</li>
+
+</ul>
+</li>
+<li><p>量词</p>
+<ul>
+<li>*表示前面一个原子重复0到n次</li>
+<li>+表示前面一个原子重复1到n次</li>
+<li>{n}表示前面一个原子重复n次</li>
+<li>{n,m}表示前面一个原子重复n到m次</li>
+
+</ul>
+</li>
+<li><p>模式修正符</p>
+<ul>
+<li>i表示不区分大小写</li>
+<li>g表示全局匹配</li>
+
+</ul>
+</li>
+<li><p>其他符号</p>
+<ul>
+<li>^表示从字符开头进行匹配</li>
+<li>$表示匹配到字符串结尾</li>
+<li>[]表示其中的一个原子</li>
+<li>|管道符表示左右两侧只要有一侧符合即可</li>
+<li>/ /表示定界符</li>
+<li>\表示转义</li>
+
+</ul>
+</li>
+
+</ul>
+<figure><table>
+<thead>
+<tr><th>原子</th><th>含义</th></tr></thead>
+<tbody><tr><td>\d</td><td>表示匹配1个0-9的数字 [0-9]</td></tr><tr><td>\D 0-9</td><td>表示匹配除数字0-9以外的字符</td></tr><tr><td>\w</td><td>匹配数字、字母、下划线</td></tr><tr><td>\W</td><td>匹配除了数字、字母、下划线以外的字符</td></tr><tr><td>\s</td><td>匹配空格</td></tr><tr><td>\S</td><td>匹配非空格</td></tr><tr><td>.</td><td>查找单个字符，除了换行和行结束符</td></tr><tr><td>\n</td><td>查找换行符</td></tr><tr><td>\n</td><td>换行字符</td></tr><tr><td>\f</td><td>换页字符</td></tr><tr><td>\r</td><td>回车字符</td></tr><tr><td>\t</td><td>制表符</td></tr><tr><td>\v</td><td>垂直制表符</td></tr></tbody>
+</table></figure>
+<figure><table>
+<thead>
+<tr><th>原子表</th><th>含义</th></tr></thead>
+<tbody><tr><td>[ ]</td><td>只匹配其中的一个原子</td></tr><tr><td>[^]</td><td>只匹配&quot;除了&quot;其中字符的任意一个原子</td></tr><tr><td>[0-9]</td><td>匹配0-9任何一个数字</td></tr><tr><td>[a-z]</td><td>匹配小写a-z任何一个字母</td></tr><tr><td>[A-Z]</td><td>匹配大写A-Z任何一个字母</td></tr></tbody>
+</table></figure>
+<figure><table>
+<thead>
+<tr><th>量词</th><th>含义</th></tr></thead>
+<tbody><tr><td>{n}</td><td>规定前面的一个原子重复n次</td></tr><tr><td>{n,}</td><td>规定前面的一个原子重复n次及n次以上</td></tr><tr><td>{n,m}</td><td>规定前面的一个原子重复n-m次</td></tr><tr><td>*</td><td>前面一个原子重复0-无数次 等价于{0,}</td></tr><tr><td>+</td><td>前面一个原子重复1-无数次 等价于{1,}</td></tr><tr><td>?=n</td><td>匹配任何其后紧接指定字符串 n 的字符串</td></tr><tr><td>?!n</td><td>匹配任何其后没有紧接指定字符串 n 的字符串</td></tr></tbody>
+</table></figure>
+<figure><table>
+<thead>
+<tr><th>符号</th><th>含义</th></tr></thead>
+<tbody><tr><td>^</td><td>从字符串开头进行匹配</td></tr><tr><td>$</td><td>匹配到字符串的末尾</td></tr><tr><td>\b</td><td>匹配单词边界</td></tr><tr><td>\B</td><td>匹配非单词边界</td></tr><tr><td>¦(这是个管道符)</td><td>符号前后两个部分只要有一侧符合即可</td></tr></tbody>
+</table></figure>
+</li>
+<li><h6 >js中的forEach()方法和vue中的v-for指令格式相似，参数都是(值,键)的格式，但jQuery中的$.each()方法参数为(obj,function(键,值){})，用于遍历对象和数组，而each()方法参数为function(键,值){}，用于dom操作</h6>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3</title>
+	<style>
+   body{
+	   background: rgb(34, 34, 34);
+       color: aliceblue;
+    }
+    </style>
+	<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/LZS博客.js"></script>
+</head>
+
+<body>
+	<h2 >Vue总结</h2>
+<ol>
+<li><p>vue中过滤器、过渡动画、插件、工具还不熟悉。</p>
+</li>
+<li><p>vue的插件：router(路由)、vuex(状态管理)、server(服务器端渲染)</p>
+</li>
+<li><p>vue工具：CLI(脚手架)</p>
+</li>
+<li><p>vue选项：el、template、data、methods、components、computed、props、生命周期等</p>
+</li>
+<li><p>全局方法：Vue开头的</p>
+</li>
+<li><p>实例方法：$符开头的</p>
+</li>
+<li><p>vue指令：v—bind、v—on、v—if、v—else、v—for、v—model、v—html、v—text等</p>
+</li>
+<li><p>vue特殊属性：key、ref、is等</p>
+</li>
+<li><p>vue内置组件：transition、transition—group、component、keep—alive、slot、template</p>
+</li>
+<li><p>vue修饰符：指令修饰符、按键修饰符</p>
+</li>
+<li><p>模板｛{}｝中是js语法格式，vue使用指令之后，引号中会成为｛{}｝的格式，某些内容不再是常量而是变量。</p>
+</li>
+<li><p>注意vue中数组和对象的使用差异！</p>
+</li>
+<li><p>v-bind:class和v-bind:style用于类名和样式的设置。</p>
+</li>
+<li><p>v-for列表渲染：
+数组时v-for=&quot;(item,index) in items&quot;
+对象时v-for=&quot;(value,key) in obj&quot;</p>
+</li>
+<li><p>v-model对表单元素进行双向数据绑定：</p>
+<ul>
+<li>Text类型时，vm.message的值是用户输入内容</li>
+<li>Radio时，vm.message的值是选中的radio元素的value值</li>
+<li>Checkbox时，单个多选框时vm.message的值是布尔值，多个多选框时vm.message的值是数组</li>
+<li>Select时，单个时vm.message的值是option标签中的内容，多个时vm.message的值是数组(option标签中的内容)</li>
+
+</ul>
+</li>
+<li><p>is属性用于解析dom模板(当组件失效时)和动态组件。</p>
+</li>
+<li><p>computed计算属性：避免了模板中加入过多的逻辑，并且与methods相比效率更高，它会进行结果缓存，只要不改变状态，它就不会重新计算，而methods会一遍一遍的重复执行。</p>
+</li>
+<li><p>watch属性：用于监听data中属性值的改变，只要值一改变，就会触发相应事件。 immediate:true（立即处理，进入页面就触发） deep:true（深度监听），对象和数组都是引用类型，引用类型变量存的是地址，地址没有变，所以不会触发watch。这时我们需要进行深度监听，就需要加上一个属性 deep，值为 true</p>
+</li>
+<li><p>全局组件：Vue.component(&#39;my-component-name&#39;,{})
+局部组件：components: { &#39;my-component-name&#39;: {} }
+组件是根组件的实例，和根组件一样具有相同的选项(el除外)。一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝。全局注册的行为必须在根 Vue 实例 (通过 new Vue) 创建之前发生。
+组件中父传子使用props选项、子传父使用事件$on()和$emit()或者在子组件中使用ref=&quot;名字&quot;属性在父组件中使用this.$refs.名字 进行通信、兄弟间使用事件总线bus。</p>
+</li>
+<li><p>组件拥有和根vue一样的属性，但data属性必须是返回值的形式，因为组件可能被多个地方使用到，这样他们就不会在更改同一个数据时发生冲突。</p>
+</li>
+<li><p>slot插槽：</p>
+<ul>
+<li>匿名插槽：会将组件标签内部全部的元素插入到slot处。</li>
+<li>具名插槽：会将<slot></slot>name属性值和具有slot属性的属性值相同的标签插入到对应的插槽处。</li>
+
+</ul>
+</li>
+<li><p>过渡：</p>
+<ul>
+<li><pre><code>&lt;div id=&quot;demo&quot;&gt;
+  &lt;button v-on:click=&quot;show = !show&quot;&gt;
+    Toggle
+  &lt;/button&gt;
+  &lt;transition name=&quot;fade&quot;&gt;
+    &lt;p v-if=&quot;show&quot;&gt;hello&lt;/p&gt;
+  &lt;/transition&gt;
+&lt;/div&gt;
+
+new Vue({
+  el: &#39;#demo&#39;,
+  data: {
+    show: true
+  }
+})
+
+.fade-enter-active, .fade-leave-active {     //过程
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to{       //开始的开始，结束的结束
+  opacity: 0;
+}
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>脚手架命令：</p>
+<ul>
+<li>npm run serve 开发环境下运行项目</li>
+<li>npm run build 生产环境下运行项目(前端发送给后端时)</li>
+<li>npm run lint 帮助检查和修复基础错误</li>
+
+</ul>
+</li>
+<li><p>规范：</p>
+<ul>
+<li>组件和文件名首字母大写</li>
+<li>路由路径名小写</li>
+<li>可复用的组件放到components文件夹下</li>
+<li>直接显示的大组件放到views文件夹下</li>
+
+</ul>
+</li>
+<li><p>vue-router路由：</p>
+<ul>
+<li><p>路由搭建</p>
+<ul>
+<li><p>先创建好需要的各组件，如Foo和Bar</p>
+</li>
+<li><p>再在router文件夹下的index.js中</p>
+<ul>
+<li><p>导入Vue、VueRouter和要创建路由的组件，调用 <strong>Vue.use(VueRouter)</strong>进行路由安装</p>
+</li>
+<li><p>路由和组件进行映射</p>
+<pre><code class='language-javascript' lang='javascript'>const routes = [
+  { path: &#39;/&#39;, redirect: &#39;/foo&#39; },//路由重定向，默认显示组件为Foo
+  { path: &#39;/foo&#39;, component: Foo },
+  { path: &#39;/bar&#39;, component: Bar },
+  
+  { path: &#39;/user&#39;,
+    component: User,
+    children: [                 //路由嵌套
+        {
+          //路由嵌套时&lt;router-link&gt;和&lt;router-view&gt;写在父组件中
+          // 当 /user/:id/profile 匹配成功，
+          // UserProfile 会被渲染在 User 的 &lt;router-view&gt; 中
+          path: &#39;profile&#39;,
+          component: UserProfile
+        }
+    ]
+  }
+  
+ { path: &#39;/user/:id&#39;, component: User } // 动态路由：以冒号开头，当匹配到一个路由时，参数值会被设置到 this.$route.params中，注意区分$route和$router
+
+ {path: &#39;/&#39;,components: {default: Foo,a: Bar,b: Baz}} //命名视图：一个视图使用一个组件渲染，因此对于同个路由，多个视图就需要多个组件。确保正确使用 components 配置 (带上 s)。同时 (同级) 展示多个视图，router-view 没有设置名字时，那么默认为 default。router-view格式：
+//&lt;router-view class=&quot;view one&quot;&gt;&lt;/router-view&gt;
+//&lt;router-view class=&quot;view two&quot; name=&quot;a&quot;&gt;&lt;/router-view&gt;
+//&lt;router-view class=&quot;view three&quot; name=&quot;b&quot;&gt;&lt;/router-view&gt;
+]
+</code></pre>
+</li>
+<li><p>创建router实例</p>
+<pre><code class='language-javascript' lang='javascript'>const router = new VueRouter({
+  routes, // (缩写) 相当于 routes: routes
+  mode:&#39;history&#39; , //vue-router默认为hash模式(url中会带#号)，可以使用mode:&#39;history&#39;更改，这样url中就不会出现#号
+  linkActiveClass:&#39;active&#39; //在路由中对原类名统一进行修改，不用再利用router-link组件中的active-class属性一个一个进行修改
+})
+</code></pre>
+</li>
+<li><p>导出router实例</p>
+</li>
+
+</ul>
+</li>
+<li><p>然后在main.js中导入router实例，并声明属性</p>
+<pre><code class='language-javascript' lang='javascript'>const app = new Vue({
+  router
+}).$mount(&#39;#app&#39;)
+</code></pre>
+</li>
+<li><p>最后在app.vue中 </p>
+<pre><code class='language-html' lang='html'> &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;        &lt;--声明式导航 --&gt;
+ &lt;router-link to=&quot;/bar&quot;&gt;Go to Bar&lt;/router-link&gt;
+ &lt;router-view&gt;&lt;/router-view&gt;
+     
+ &lt;button @click=&#39;fooclick&#39;&gt;&lt;/button&gt;                   &lt;--编程式导航 --&gt;
+ &lt;script&gt;
+     export default{
+         methods:{
+             fooclick(){
+                 this.$router.push(&#39;/foo&#39;)   
+             }
+         } 
+     }
+ &lt;/script&gt;
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><p>router-link组件的属性</p>
+<ul>
+<li>to：用于指定跳转路径</li>
+<li>tag：指定渲染成什么标签，默认为a标签</li>
+<li>replace：不能进行前进和回退，默认为可前进回退</li>
+<li>active-class：修改类名，当对应的路由匹配成功，将自动设置 class 属性值 .router-link-active</li>
+
+</ul>
+</li>
+<li><p>router-link和router-view映射关系(一个视图使用一个组件渲染，多个视图需要多个组件)</p>
+<ul>
+<li>一对一：一个router-link对应即将要跳转组件的父组件中的一个router-view</li>
+<li>一对多：不存在</li>
+<li>多对一：多个router-link对应即将要跳转组件的父组件中的一个router-view(不管有几个router-view，这些router-link会跳向同一个默认的router-view)</li>
+<li>多对多：同时 (同级) 展示多个视图，使用命名视图</li>
+
+</ul>
+</li>
+<li><p>路由懒加载：</p>
+<ul>
+<li><p>为防止首页打开时文件太大加载时长导致短暂的空白页面出现</p>
+</li>
+<li><p>只需要在router文件夹下的index中</p>
+<pre><code class='language-javascript' lang='javascript'>const Foo = () =&gt; import(/* webpackChunkName: &quot;group-foo&quot; */ &#39;./Foo.vue&#39;)
+const Bar = () =&gt; import(/* webpackChunkName: &quot;group-foo&quot; */ &#39;./Bar.vue&#39;)
+</code></pre>
+</li>
+<li><p>正常文件build打包后会有三个js文件，但懒加载后打包后的js中会有多的路由组件js，有几个路由组件映射就有几个js文件</p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p>vue反向代理：</p>
+<ul>
+<li><p>在和 <code>package.json</code> 同级的根目录中新建一个vue.config.js文件，它 是一个可选的配置文件，如果项目的 (和 <code>package.json</code> 同级的) 根目录中存在这个文件，那么它会被 <code>@vue/cli-service</code> 自动加载。</p>
+</li>
+<li><pre><code class='language-javascript' lang='javascript'>module.exports = {
+  devServer: {
+    proxy: {
+      &#39;/api&#39;: {
+        target: &#39;&lt;url&gt;&#39;,
+        ws: true,
+        changeOrigin: true
+      },
+      &#39;/foo&#39;: {
+        target: &#39;&lt;other_url&gt;&#39;
+      }
+    }
+  }
+}
+</code></pre>
+</li>
+
+</ul>
+</li>
+
+</ol>
+
+</body>
+</html>

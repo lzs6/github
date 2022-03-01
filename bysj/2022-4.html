@@ -1,0 +1,479 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>4</title>
+	<style>
+body{
+	   background: rgb(34, 34, 34);
+       color: aliceblue;
+    }
+</style>
+	<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/LZS博客.js"></script>
+</head>
+<body>
+	<h2 >全栈知识点积累:</h2>
+<ol>
+<li><h5 >php特色:</h5>
+<ul>
+<li><h6 >所有的php代码放在<?php?>当中，运行时以localhost地址在浏览器中运行，兼容html和css语言</h6>
+</li>
+<li><h6 >使用header头部声明编码格式</h6>
+</li>
+<li><h6 >语句严格，每条语句必须以分号结尾</h6>
+</li>
+<li><h6 >变量以$进行声明方法和函数与其他类似</h6>
+</li>
+<li><h6 >数组分为三种:（索引数组和关联数组可以结合使用，结合成多维数组）</h6>
+<ul>
+<li>索引数组：即普通数组，下标是数字</li>
+<li>关联数组：下标是字符串，array(&quot;下标字符串&quot;=&gt;&quot;对应值&quot;)</li>
+<li>全局数组：$<em>GET和$</em>POST用于接收前台数据</li>
+
+</ul>
+</li>
+<li><h6 >获取数组长度：count(数组名)</h6>
+</li>
+<li><h6 >三种输出函数：</h6>
+<ul>
+<li>echo();或echo&quot;&quot;;</li>
+<li>print_r(&quot;&quot;);</li>
+<li>var_dump(&quot;&quot;);</li>
+
+</ul>
+</li>
+<li><h6 >字符串拼接时使用.或者{}</h6>
+</li>
+
+</ul>
+</li>
+<li><figure><table>
+<thead>
+<tr><th style='text-align:center;' >区分</th><th style='text-align:center;' >JavaScript</th><th style='text-align:center;' >php</th><th style='text-align:center;' >c++</th><th>python</th></tr></thead>
+<tbody><tr><td style='text-align:center;' >变量</td><td style='text-align:center;' >变量名称可以是字母数字下划线和$，但不能以数字开头</td><td style='text-align:center;' >以 $ 符号开头，其后是变量的名称，变量名称可以是字母数字下划线，但不能以数字开头</td><td style='text-align:center;' >变量名称可以是字母数字下划线，但不能以数字开头</td><td>变量名称可以是字母数字下划线，但不能以数字开头，不用声明</td></tr><tr><td style='text-align:center;' >字符串和数组长度属性或方法</td><td style='text-align:center;' >length属性</td><td style='text-align:center;' >字符串：strlen()                         数组：count()</td><td style='text-align:center;' >字符串：strlen()                        数组：sizeof()</td><td>len()方法</td></tr><tr><td style='text-align:center;' >运算符和循环语句</td><td style='text-align:center;' >基本相同</td><td style='text-align:center;' >基本相同</td><td style='text-align:center;' >基本相同</td><td>基本相同（无括号）</td></tr><tr><td style='text-align:center;' >数据类型</td><td style='text-align:center;' >两大类：初始数据类型和引用数据类型</td><td style='text-align:center;' >有浮点型</td><td style='text-align:center;' >有浮点型</td><td>有浮点型</td></tr><tr><td style='text-align:center;' >输出函数</td><td style='text-align:center;' >consol.log()或alert()</td><td style='text-align:center;' >echo()或print()</td><td style='text-align:center;' >printf()</td><td>print()</td></tr><tr><td style='text-align:center;' >输入函数</td><td style='text-align:center;' >confrim()</td><td style='text-align:center;' >input()</td><td style='text-align:center;' >scanf()</td><td>input()</td></tr><tr><td style='text-align:center;' >数组</td><td style='text-align:center;' >索引数组</td><td style='text-align:center;' >索引数组和关联数组</td><td style='text-align:center;' >索引数组</td><td>列表、元组、集合、字典</td></tr></tbody>
+</table></figure>
+</li>
+<li><h5 >php与数据库连接8步：</h5>
+<ul>
+<li><h6 >连接数据库</h6>
+<pre><code class='language-php' lang='php'>$link=mysql_connect(&quot;localhost&quot;,&quot;用户名&quot;,&quot;密码&quot;);
+</code></pre>
+</li>
+<li><h6 >判断是否连接成功</h6>
+<pre><code class='language-php' lang='php'>if(!$link){echo&quot;连接失败&quot;;exit;}
+</code></pre>
+</li>
+<li><h6 >设置字符集编码格式</h6>
+<pre><code class='language-php' lang='php'>mysql_set_charset(&quot;utf8&quot;);
+</code></pre>
+</li>
+<li><h6 >选择数据库</h6>
+<pre><code class='language-php' lang='php'>mysql_select_db(&quot;数据库名&quot;);
+</code></pre>
+</li>
+<li><h6 >准备sql语句</h6>
+<pre><code class='language-php' lang='php'>$sql=&quot;SELECT*FROM 表名&quot;;
+</code></pre>
+</li>
+<li><h6 >发送sql语句</h6>
+<pre><code class='language-php' lang='php'>$res=mysql_query($sql);
+</code></pre>
+</li>
+<li><h6 >处理结果</h6>
+<pre><code class='language-php' lang='php'>$arr=array();//创建索引数组
+while($row=mysql_fetch_assoc($res)){ //将数据一行一行输出
+array_push($arr,$row);//将每一行关联数组依次插入到索引数组，形成二维数组
+echo json_encode($arr);//将二维数组转化为json格式字符串以供前台接收使用
+</code></pre>
+</li>
+<li><h6 >关闭数据库</h6>
+<pre><code class='language-php' lang='php'> mysql_close($link);
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><h5 >前台处理后台发送的数据：（例：从数据库中查询数据）</h5>
+<ul>
+<li>通过json.parse()将json格式字符串转化为json对象(<strong>关联数组中的键和值与对象中的冒号前后一一对应</strong>)，并通过ajax内部循环语句以及模板字符串(<code>${}</code>)进行网页渲染</li>
+
+</ul>
+</li>
+<li><h5 >前台向后台发送数据：（例：插入数据到数据库）</h5>
+<ul>
+<li>将数据写入Ajax的data中，以get或post方式发送</li>
+
+</ul>
+</li>
+<li><h5 >后台处理前台发送的数据：（例：插入数据到数据库）</h5>
+<ul>
+<li><p>后台以$_post[&#39;键&#39;]的方式进行数据获取(<strong>相当于关联数组中的键和值与对象中的冒号前后一一对应</strong>)</p>
+</li>
+<li><p>注意：后台要给前台回馈，通过关联数组形式：</p>
+<pre><code class='language-php' lang='php'>$responseData=arrry(&quot;code&quot;=&gt;0,&quot;message&quot;=&gt;&quot;&quot;);
+</code></pre>
+</li>
+<li><p>然后进行天龙八部,先连接数据库</p>
+</li>
+<li><p>再判断是否连接成功</p>
+<pre><code class='language-php' lang='php'>if(!$link){$responseData[&quot;code&quot;]=1;$responseData[&quot;message&quot;]=&quot;数据库连接失败&quot;echo json_encode($responseData);//返回到前台页面exit;//退出}
+</code></pre>
+</li>
+<li><p>设置代码格式，选择数据库</p>
+</li>
+<li><p>准备sql语句进行插入操作</p>
+<pre><code class='language-php' lang='php'>$sql=&quot;INSERT INTO 表名(···) VALUE(···)&quot;;
+</code></pre>
+</li>
+<li><p>发送sql语句</p>
+</li>
+<li><p>判断是否插入成功，进行回馈</p>
+<pre><code class='language-php' lang='php'>if(!$res){//$res是发送sql的返回值，是一个布尔值$responseData[&quot;code&quot;]=2;$responseData[&quot;message&quot;]=&quot;插入失败&quot;echo json_encode($responseData);//返回到前台页面exit;//退出}else{$responseData[&quot;message&quot;]=&quot;插入成功&quot;//注意：最后一个返回值code一般不写，默认为初始值0echo json_encode($responseData);//返回到前台页面}
+</code></pre>
+</li>
+<li><p>关闭数据库</p>
+</li>
+
+</ul>
+</li>
+<li><h6 >注意：密码在插入数据库时需要md5加密</h6>
+</li>
+<li><h5 >注意：一般而言，增加和查询无需使用事件委托，但删除和修改操作必须依靠事件委托</h5>
+</li>
+<li><h5 >注意：可以使用input，将type值设为hidden，用于向后台传送id值，且在页面不可见</h5>
+</li>
+<li><h5 >注意：一旦遇到是否连接，操作成功以及是否存在，是否为空的情况，一定要进行判断：</h5>
+<ul>
+<li>用户名是否为空</li>
+<li>密码是否为空</li>
+<li>用户名是否已经存在</li>
+<li>注册/登录是否成功</li>
+<li>连接数据库是否成功</li>
+
+</ul>
+</li>
+<li><h4 >删除数据操作：</h4>
+<ul>
+<li>需要提前将数据库数据对应的id加到<strong>删除按钮上</strong></li>
+<li>并且需要新建另外的delete.php文件,通过ajax将要删除的数据的id传给delete.php后台，通过sql语句将其从数据库中删除，并且在前台页面也将其dom元素删除</li>
+
+</ul>
+</li>
+<li><h4 >修改数据操作：</h4>
+<ul>
+<li>点击修改按钮时需要跳转到一个<strong>新的链接</strong></li>
+<li>需要提前将<strong>新链接地址</strong>后跟数据库数据对应的id以get提交格式(?id=1)加到<strong>修改按钮上</strong></li>
+<li>在新链接HTML中构建<strong>valueByName()</strong>筛选函数，利用id=valueByName(<strong>location.search,</strong>&quot;id&quot;)将id数取出，利用Ajax将id数传入<strong>修改后台php页面</strong></li>
+<li>在php页面中将查到的id对应数据直接赋给message返回</li>
+<li>然后在新链接HTML中对返回数据进行二次解析(因为message中保存的是一行，是关联数组)</li>
+<li>点击提交按钮时需要将修改内容和对应id传入<strong>提交后台php页面</strong>，并且判断是否重名和id是否相同(因为有不修改就直接提交的情况)</li>
+
+</ul>
+</li>
+<li><h4 >git命令：</h4>
+<ul>
+<li><p>git init <!--初始化(建立暂存区即.git文件)--></p>
+</li>
+<li><p>git add .和git commit -m &#39;描述&#39;<!--提交内容到暂存区--></p>
+</li>
+<li><p>git status <!--查看工作区的状态--></p>
+</li>
+<li><p>git checkout 文件名 <!--从暂存区恢复文件到工作区--></p>
+</li>
+<li><p>git log<!--查看已经提交到暂存区的历史版本--></p>
+</li>
+<li><p>git reset --hard 版本号 <!--恢复文件到指定的某个版本--></p>
+</li>
+<li><p>ssh-keygen -t rsa -C &#39;邮箱地址&#39; <!--生成ssh密匙  然后在电脑中找到id_rsa.pub文件，再在github中配置--></p>
+</li>
+<li><p>git remote origin 地址和git push -u origin master <!--将暂存区与远程仓库连接并推送，第一次以后推送使用git oush即可--></p>
+</li>
+<li><p>git clone <!--从远程仓库克隆项目到本地--></p>
+</li>
+<li><p>git pull <!--从远程仓库拉向本地工作区--> </p>
+</li>
+<li><p>github远程仓库：</p>
+<ul>
+<li>先使用ssh-keygen  -t rsa –C &quot;<a href='mailto:youremail@example.com' target='_blank' class='url'>youremail@example.com</a>&quot;你需要把邮件地址换成你自己的邮件地址,并且必须要用双引号，不能用单引号。然后一路回车，使用默认值即可。id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</li>
+<li>登录github,打开” settings”中的SSH Keys页面，然后点击“Add SSH Key”,填上任意title，在Key文本框里黏贴id_rsa.pub文件的内容。点击 Add Key，你就应该可以看到已经添加的key。</li>
+
+</ul>
+</li>
+<li><pre><code class='language-java' lang='java'>git remote set-url origin https://&lt;your_token&gt;@github.com/&lt;USERNAME&gt;/&lt;REPO&gt;.git //因github已更改登录方式，因此需要token登录
+</code></pre>
+<ul>
+<li><code>&lt;your_token&gt;</code>：換成你自己得到的 token</li>
+<li><code>&lt;USERNAME&gt;</code>：是你自己 github 的用戶名</li>
+<li><code>&lt;REPO&gt;</code>：是你的倉庫名稱</li>
+
+</ul>
+<p>例如：</p>
+</li>
+<li><p>如果在推送时上不去可能原因及解决如下:</p>
+<ul>
+<li>上传文件太大，git缓存不够</li>
+<li>修改git文件下config中的url https为http或http为https</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><h4 >服务器：</h4>
+<ul>
+<li><p>虚拟主机是在一个独立服务器上采用虚拟化技术分割出来的多个空间。虚拟主机是用服务器分的  一个服务器可以开N多虚拟主机 一般大型网站选用服务器。</p>
+</li>
+<li><p>租用服务器怎么使用？</p>
+<p>服务器租用完成以后，服务商会给你购买服务器的IP用户名和密码，你可以用此来登录使用服务器。</p>
+<p>1.在本地电脑上点开始-运行，输入mstsc，输入IP用户名和密码，然后点连接，即可远程登录服务器。</p>
+<p>2.远程登录以后就会出现服务器的桌面，和平时我们自己的电脑是一样的。</p>
+<p>3.你可以根据自己的需要在上面安装软件、配置环境等，也可以让服务商帮你配置一些常用的环境。</p>
+</li>
+
+</ul>
+</li>
+<li><h4 >UI框架：</h4>
+<ul>
+<li>UI框架适用于规范不太严格的页面制作，而规范的网页还得自己动手实现</li>
+<li>UI框架基本思想：通过引入框架链接，以简单方式实现对框架库中以成型模型的快速使用，提高效率。</li>
+<li>bootstarp框架：适用于非模块化开发，无论是css还是js动态效果，都只用使用html，在引入需要的bootstarp文件后，就可以通过添加类名的方式实现想要的效果，如果想实现某些功能，还需要引入jQuery。</li>
+<li>layui、element和vant框架：适用于模块化开发，属于纯组件库</li>
+
+</ul>
+</li>
+<li><h4 >三种缓存方式比较：</h4>
+<h5 >相同点：</h5>
+<p>都保存在浏览器端，同源的</p>
+<h5 >不同点：</h5>
+<ol>
+<li><p>传递方式不同</p>
+<ul>
+<li>cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。</li>
+<li>sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。</li>
+
+</ul>
+</li>
+<li><p>数据大小不同</p>
+<ul>
+<li>cookie数据不能超过4k</li>
+<li>sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。</li>
+
+</ul>
+</li>
+<li><p>数据有效期不同</p>
+<ul>
+<li>cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。</li>
+<li>sessionStorage：仅在当前浏览器窗口关闭前有效。</li>
+<li>localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；</li>
+
+</ul>
+</li>
+
+</ol>
+</li>
+<li><h4 >cookie：会话跟踪技术</h4>
+<ul>
+<li>最大可以存储4kb，只能存储字符串</li>
+<li>谷歌只支持服务器端cookie，而火狐还支持本地cookie</li>
+<li>格式必选项：键=值    </li>
+<li>格式可选项:过期日期、路径、域名、安全</li>
+
+</ul>
+</li>
+<li><h6 >数据请求：</h6>
+<ul>
+<li><p>ajax的使用需要引入jQuery的库，成本太高</p>
+</li>
+<li><p>使用fetch和axios是专门的数据请求库，在使用jQuery以外的语言进行开发时，只需引入这两个其中之一就可以</p>
+</li>
+<li><p>fetch语法：</p>
+<pre><code>fetch(&#39;url&#39;,{ method: &#39;GET&#39;,               headers: myHeaders,               mode: &#39;cors&#39;,               cache: &#39;default&#39; }).then(res=&gt;res.json()).then(res=&gt;{console.log(res)})                //post同理
+</code></pre>
+</li>
+<li><p>axios语法：</p>
+<pre><code>axios.get(&#39;url&#39;).then(res=&gt;{console.log(res)}).catch(err=&gt;{console.log(err)})    //post同理
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><h4 >AJAX：</h4>
+<ul>
+<li><p>原生ajax：</p>
+<pre><code class='language-javascript' lang='javascript'>// 兼容实例化一个ajax对象function newAjax(){    var xhr = window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject(&quot;Miscrosoft.XMLHTTP&quot;)    return xhr;}//ajax函数  //1. type:方式 &quot;get&quot; &quot;post&quot;  //2. url:地址 url &quot;demo.php&quot;  //3.data:数据  &quot;id=0&amp;name=zhangsan&quot;  //4.asynch:是否异步  true  false  //5.dataType:返回数据的格式 &quot;text&quot; &quot;json&quot; &quot;xml&quot;  //6.success返回数据之后进行的操作  function(){}function ajax(options){    //没有url 直接退出    if(!options.url){        alert(&#39;请输入URL&#39;);        return;    }    var type = options.type || &#39;GET&#39;;    var async = options.async==undefined?true:options.async;    var dataType = options.dataType || &#39;text&#39;;    var dataStr = &quot;&quot;;    if(options.data){        if(typeof options.data==&#39;string&#39;){            dataStr = options.data;        }else{            //{user:123,pwd:456}            for(var i in options.data){                 dataStr+= i+&#39;=&#39;+options.data[i]+&#39;&amp;&#39;                //user=123&amp;pwd=456&amp;            }            dataStr = dataStr.slice(0,-1)        }    }    //dataStr = &quot;user=123&amp;pwd=456&quot;    var xhr = new XMLHttpRequest();    if(type.toUpperCase() ==&#39;GET&#39;){        if(dataStr){            xhr.open(&#39;GET&#39;,options.url+&#39;?&#39;+dataStr,async);        }else{            xhr.open(&#39;GET&#39;,options.url,async);        }        xhr.send();    }    if(type.toUpperCase() ==&#39;POST&#39;){        xhr.open(&#39;POST&#39;,options.url,async);        xhr.setRequestHeader(&#39;Content-Type&#39;,&#39;application/x-www-form-urlencoded;charset=utf-8&#39;);        xhr.send(dataStr);    }    xhr.onreadystatechange = function(){        if(xhr.readyState==4){            if(xhr.status==200){                if(dataType==&#39;text&#39;){                    options.success&amp;&amp;options.success(xhr.response);                }else if(dataType==&#39;xml&#39;){                    options.success&amp;&amp;options.success(xhr.responseXML);                }else if(dataType==&#39;json&#39;){                    options.success&amp;&amp;options.success(JSON.parse(xhr.response));                }            }else if(xhr.status ==404){                alert(&#39;请求失败&#39;);            }        }    }}
+</code></pre>
+</li>
+<li><p>get和post比较：</p>
+<ul>
+<li><p>get比post传输量小</p>
+</li>
+<li><p>get比post安全性低，url后直接跟get数据（?数据&amp;数据&amp;数据）</p>
+</li>
+<li><p>get一般用于获取数据，post用于传送数据</p>
+</li>
+<li><p>jquery中的<strong>load(url,[data],[function])</strong>方法，直接将返回的HTML代码插入到dom中，通常用于<strong>获取数据</strong>。若参数url为&quot;url 选择器&quot;，则只将选择器部分插入，若参数data有值(json格式)，则以post方式传送，无值，则默认为get方式，且function函数在请求完成后执行，无论成功或失败</p>
+</li>
+<li><p>jquery中的<strong>$.get(url,[data],[function])</strong>方法和<strong>$.post(url,[data],[function])</strong>方法，通常用于<strong>发送数据</strong>，且function函数必须在请求成功以后才能执行</p>
+</li>
+<li><p>jquery中的<strong>$.ajax()</strong>方法和最底层的ajax类似：</p>
+<pre><code class='language-javascript' lang='javascript'>$.ajax({type:&quot;method&quot;,url:&quot;···&quot;,data:{···},datatype:&quot;···&quot;,success:function(respon){},error:function(msg){},····})
+</code></pre>
+</li>
+<li><p>ajax遵循的是http协议</p>
+</li>
+<li><p>ajax下载必须遵循同源策略，即同协议，同域名，同ip，同端口号，非同源时：</p>
+<ul>
+<li>修改ajax同源协议(不安全)CORS</li>
+<li>利用php中转进行跨源(php无跨域限制)或代理服务器进行中转</li>
+<li>jsonp跨域</li>
+
+</ul>
+</li>
+<li><p>jsonp跨域：（jquery中$.ajax方法中的datatype:&quot;jsonp&quot;可以解决）</p>
+<ul>
+<li>先去声明一个函数，这个函数有一个形参，这个形参会拿到我们想要下载的数据</li>
+<li>在需要下载数据的时候，动态创建script标签，将script标签中的src属性设为下载数据的链接（因为src无跨域限制）</li>
+<li>当script标签插入到页面时就可以使用封装好的函数，将数据传入</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p>此系统禁止运行脚本原因及解决办法:</p>
+<ul>
+<li>原因：首次在计算机上启动 Windows PowerShell 时，现用执行策略很可能是 Restricted（默认设置）。Restricted 策略不允许任何脚本运行，防止执行不信任的脚本。</li>
+<li>解决办法：以管理员身份运行编辑器或cmd，输入命令  set-executionpolicy remotesigned</li>
+
+</ul>
+</li>
+<li><p>dart-sass和node-sass区别:</p>
+<ul>
+<li>node-sass 是用 node(调用 cpp 编写的 libsass)来编译 sass；</li>
+<li>dart-sass 是用 drat VM 来编译 sass；</li>
+<li>node-sass是自动编译实时的，dart-sass需要保存后才会生效</li>
+<li>推荐 dart-sass 性能更好(也是 sass 官方使用的），而且 node-sass 因为国情问题经常装不上</li>
+
+</ul>
+</li>
+<li><h6 >sass：</h6>
+<ul>
+<li><p>使用$标明变量，&amp;表示父选择器，@标明函数、判断、循环、继承、导入以及混合器(@function、@if、@for、@extend、@import以及@mixin与@include)</p>
+</li>
+<li><p>通过#{}插值语句可以在<strong>选择器或属性名</strong>中使用变量</p>
+</li>
+<li><pre><code>// 这种注释内容不会出现在生成的css文件中/* 这种注释内容会出现在生成的css文件中 */
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><h6 >页面开发三个阶段：</h6>
+<ul>
+<li>后端渲染：后端代码中html、css、js会代码混杂，不利于维护，但首页加载时间短，对搜索引擎友好</li>
+<li>前后端分离：利于代码维护，使分工明确，减轻服务器的压力</li>
+<li>SPA单页面富应用：在前后端分离的基础上加上前端路由。一个网站被压缩为一个html、css、js，一个组件就是一个页面，以前每请求一个页面都需要向静态资源服务器请求一次，而现在通过前端路由就可以在压缩的文件中分离出需要的代码，然后在浏览器中进行显示，不再需要向服务器进行请求，开创了无刷新页面的时代</li>
+
+</ul>
+</li>
+<li><h6 >无刷新更改url的方式：</h6>
+<ul>
+<li>location.hash=&#39;url&#39;</li>
+<li>history.pushState(数据,标题,url)          可以使用go(数字)进行回退和前进</li>
+<li>history.replaceState(数据,标题,url)      不可以使用go(数字)进行回退和前进</li>
+
+</ul>
+</li>
+<li><h6 >不使用模块化开发导致的问题及解决方式：</h6>
+<ul>
+<li><p>多人开发时的js文件名重名现象，会导致自己写的全局变量覆盖别人写的变量，从而出现不可预估的错误</p>
+</li>
+<li><p>解决重名：利用函数作用域原理在每一个js文件内部嵌套(function(){})()，此时重名问题得到解决，但代码复用的问题却不能实现</p>
+</li>
+<li><p>解决代码不能复用：利用返回对象的原理将所需js文件中的变量和方法以返回值导出</p>
+<pre><code class='language-javascript' lang='javascript'>var ModuleA=(function(){var obj={};obj.···=···；return obj；})()
+</code></pre>
+</li>
+
+</ul>
+</li>
+<li><h6 >模块化开发的规范：</h6>
+<ul>
+<li><p>CommonJS、AMD、CMD以及ES6中的Modules，核心为导入和导出</p>
+</li>
+<li><p>CommonJS的导入和导出：</p>
+<ul>
+<li>导出：module.exports={flag:flag;sum:sum;}</li>
+<li>导入：var {flag,sum}=require(&#39;要导入的文件路径&#39;)</li>
+
+</ul>
+</li>
+<li><p>ES6的导入和导出：</p>
+<ul>
+<li><p>导出：export {flag,sum}</p>
+<ul>
+<li>默认导出：export default xxx    注意：xxx只能是一个，不能是多个</li>
+
+</ul>
+</li>
+<li><p>导入：import {flag,sum} from &#39;要导入的文件路径&#39;</p>
+<ul>
+<li>import 自定义名 from &#39;要导入的文件路径&#39;</li>
+<li>import * as 自定义对象名 from &#39;要导入的文件路径&#39;，然后再通过对象名调用的方式调用需要的东西</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p>ES6中解决重名(分割作用域)：</p>
+<ul>
+<li>在script标签中加入type=&#39;module&#39;</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><h6 >webpack：</h6>
+<ul>
+<li>用于模块化开发，能对各种资源进行处理，可以将无法直接在浏览器中使用的语言编译为浏览器支持的形式。webpack使用前需要配置文件，但vue脚手架的安装就不必再考虑webpack配置文件的问题。</li>
+
+</ul>
+</li>
+<li><h6 >npm install：</h6>
+<ul>
+<li>在哪个目录下执行就安装在这个目录的node_modules文件夹下。</li>
+
+</ul>
+</li>
+
+</ol>
+<ul>
+<li><p>如果是npm instal -g，则是安装在全局的地方(一般安装在node_global中)，所有node项目都可以使用这个module。</p>
+<ul>
+<li>npm表示使用海外源，cnpm表示使用国内源。</li>
+
+</ul>
+</li>
+
+</ul>
+<ol start='28' >
+<li><h6 >MVVM：</h6>
+<ul>
+<li>Model：数据和逻辑</li>
+<li>View：视图</li>
+<li>ViewModel：就是与界面(view)对应的Model，数据库结构往往是不能直接跟界面控件一一对应上的，ViewModel的职责就是把model对象封装成可以显示和接受输入的界面数据对象</li>
+
+</ul>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+
+</body>
+</html>

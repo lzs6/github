@@ -18,6 +18,9 @@
     font-size: 0.24rem;
     cursor: pointer;
 }
+main{
+   overflow:hidden;
+}
 main .left{
     width: 2rem;
     text-align: center;
