@@ -73,23 +73,3 @@ for (let j=0; j<lbd.length; j++) {
           nr[i].style.display='block'
       }
   }
-//   按需加载
-//    for(var i=0;i<k.length;i++){
-//             var div=k[i].querySelectorAll("div");
-//             if(!k[i].flag){
-//             if(k[i].offsetTop-document.body.clientHeight>document.documentElement.scrollTop){
-//                 for(var j=0;j<div.length;j++){
-//                     div[j].src=div[j].getAttribute("adress");   
-//                 }
-//                 k[i].flag=true; 
-//             }
-//         }
-//         }
-//window.innerHeight：浏览器窗口的视口（viewport）高度（以像素为单位）；如果有水平滚动条，也包括滚动条高度
-//有时候一个网页会包含很多的图片，页面图片多，加载的图片就多。服务器压力就会很大。
-//为了解决以上问题，提高用户体验，就出现了懒加载方式来减轻服务器的压力，优先加载可视区域的内容，其他部分等进入了可视区域再加载，从而提高性能。
-//实现懒加载有四个步骤，如下：
-// 1.加载loading图片
-// 2.判断哪些图片要加载【重点】
-// 3.隐形加载图片
-// 4.替换真图片
