@@ -5,40 +5,42 @@ html{
 }
 body{
 	background: #BDB1A3 ;
-	background-size: cover;
 	font-size: 16px;
 }
-a{
-	color: #e4ecec;
-    text-decoration: none;
+main{
+	background-size: cover;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
 }
-ul{
-	display: inline-block;
+main ul{
 	width: 5rem;
-	height: 15rem;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 10px;
-	margin: auto;
+	height: auto;
+	margin:3rem auto;
 }
-li{
-	height: 1.3rem;
+main ul li{
+	height: 1rem;
 	background:black;
 	opacity: 0.6;
-	margin-top: 90px;
+	margin-top: 2rem;
 	list-style: none;
 	border-radius: 0.2rem;
-	line-height: 1.3rem;
+}
+
+main ul li:hover{
+	border: #4BC6CA 0.02rem solid;
+}
+main ul li a{
+	text-decoration: none;
+	display: block;
+	width: 5rem;
+	height: 1rem;
+	line-height: 1rem;
 	text-align: center;
-	font-size:0.4rem;
+	font-size: 0.3rem;
 	color: #e4ecec;
 }
-li:hover{
-	border: #4BC6CA 2px solid;
-	cursor: pointer;
-}
-li a:hover{
+a:hover{
 	color:#2e55d6;
 	font-size: 0.3rem;
 }
