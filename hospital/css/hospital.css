@@ -547,7 +547,11 @@ footer{
 .zd li a:hover{
     color: rgb(31, 31, 138);
 }
-.shjb-1,.shjb-2,.shjb-3,.shjb-4,.shjb-5,.ztl,.tbl{
+.dbkb{
+    width: 100%;
+    height: 80px;
+}
+.shjb-1,.shjb-2,.shjb-3,.shjb-4,.shjb-5,.ztl,.tbl,.dbkb{
     display: none;
 }
 @media screen and (min-width:860px) and (max-width:1290px){
@@ -558,6 +562,9 @@ footer{
 @media screen and (max-width:860px){
    header,nav,main,.zbtp,.footer-s,footer,.zd{
        display: none;
+   }
+   .dbkb{
+       display: block;
    }
    .shjb-1{
        width: 100%;
@@ -657,15 +664,15 @@ footer{
        display: block;
    }
    .ztl a .cd{
-       width: 10%;
+       width: 12%;
        height: 100%;
        float: left;
        background: rgb(38, 72, 165);
-       margin-left: 20px;
        font-family: 'ztl';
        font-size: 3em;
        color: beige;
        line-height: 80px;
+       border-radius: 5px;
    }
    .ztl a .dh{
        width: 8%;
