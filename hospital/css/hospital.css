@@ -425,6 +425,7 @@ main .lbt2 .rw{
     position: absolute;
     right:10%;
     top: 15%;
+    z-index: 100;
 }
 main .lbt2 .rw li{
     width:100%;
