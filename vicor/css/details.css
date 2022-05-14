@@ -498,16 +498,16 @@ line-height: 0.34rem;
     left: 1.35rem;
     top: 0.12rem;
 }
-footer{
+.footerFirst{
     display: flex;
     justify-content: space-between;
 }
-footer .footerLeft{
+.footerFirst .footerLeft{
     width: 18%;
     text-align: center;
     position: relative;
 }
-footer .footerLeft::after{
+.footerFirst .footerLeft::after{
     content: '';
     position: absolute;
     width: 0.02rem;
@@ -516,22 +516,22 @@ footer .footerLeft::after{
     right: 0;
     top: 0;
 }
-footer .footerLeft .icon-wodeshoucang{
+.footerFirst .footerLeft .icon-wodeshoucang{
     font-size: 0.6rem;
     color: #666666;
 }
-footer .footerLeft p{
+.footerFirst .footerLeft p{
     font-size: 0.2rem;
     line-height: 0.36rem;
     letter-spacing: 0.02rem;
     color: #666666;
 }
-footer ul{
+.footerFirst ul{
     width: 82%;
     display: flex;
     text-align: center;
 }
-footer ul li{
+.footerFirst ul li{
     width: 50%;
     line-height: 0.88rem;
     text-align: center;
@@ -539,7 +539,7 @@ footer ul li{
     letter-spacing: 0.03rem;
     color: #666666;
 }
-footer ul li:last-child{
+.footerFirst ul li:last-child{
     background-color: #ffcb3f;
     border-radius: 0.04rem;
     color: #fff;
